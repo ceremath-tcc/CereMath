@@ -1,0 +1,67 @@
+hr {
+    border: none;
+    height: 2px;
+    background-color: #2c3e50; 
+    margin: 20px 0; 
+    margin-left: 10px;         
+    width: 90%;       
+}
+:root {
+  --roxo: #6b10d7;        /* botão principal */
+  --roxo-dark: #5411aa;   /* hover */
+  --verde: #2ecc71;       /* acertos */
+  --vermelho: #e74c3c;    /* erros */
+  --bg: #f6f7fb;          /* fundo */
+  --texto: #1f2937;       /* cinza-escuro */
+  --borda: #e5e7eb;       /* borda leve */
+}
+body {
+  margin: 0;
+}
+.container-conta { max-width: 1100px; margin: 28px auto; padding: 0 16px; }
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.07);
+  padding: 20px;
+  margin-bottom: 18px;
+}
+.title { font-size: 28px; font-weight: 800; display:flex; gap:10px; align-items:center; margin: 0 0 14px; }
+.emoji { font-size: 24px; }
+.row   { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+
+.tag {
+  border: 2px dashed #cfd6dd;
+  background: #fafbff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.actions { display:flex; flex-wrap:wrap; gap:12px; margin-top: 8px; }
+.btn-conta {
+  width: 49%;
+  border: 0; 
+  border-radius: 
+  14px; 
+  padding: 10px 16px; 
+  font-weight: 800;
+  cursor: pointer; 
+  transition: .18s ease; 
+  display: inline-flex; 
+  gap:10px; 
+  align-items:center;
+  text-decoration: none; /* para os <a> ficarem como botão */
+}
+
+.btn-roxo { background: var(--roxo); color: #fff; }
+.btn-roxo:hover { background: var(--roxo-dark); }
+.btn-sair { background: #ffd9b3; color: #5c2a00; }
+
+.divider { height: 1px; background: var(--borda); margin: 16px -20px; }
+
+h2 { font-size: 22px; margin: 0; }
+.legend { display:flex; gap:18px; align-items:center; margin-left: 12px; }
+.dot { width:12px; height:12px; border-radius: 999px; display:inline-block; }
+
+.chart-area { padding-top: 8px; }

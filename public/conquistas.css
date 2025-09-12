@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f9fbfd;
+}
+
+/* Conteúdo da página */
+.content {
+    max-width: 900px;
+    margin: 0 auto; /* Centraliza */
+    padding: 40px 20px;
+}
+
+/* Cabeçalho */
+.content h1 {
+    font-size: 26px;
+    color: #2c72c7;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Filtros */
+.filters {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+.filters a {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #333;
+    background: #eef3f9;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+.filters a:hover {
+    background-color: #dbe8ff;
+}
+.filters a.active {
+    border: 2px solid #2c72c7;
+    background: #e8f0fe;
+    color: #2c72c7;
+}
+
+/* Conquistas */
+.achievement {
+    display: flex;
+    align-items: center;
+    background-color: #f1f3f5;
+    padding: 14px 18px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+.achievement:hover {
+    transform: translateY(-2px);
+}
+
+.achievement .icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.achievement strong {
+    font-size: 16px;
+    color: #4b0082;
+}
+
+.achievement small {
+    color: #333;
+    font-size: 14px;
+}
+
+.achievement.locked {
+    opacity: 0.6;
+    filter: grayscale(100%);
+}

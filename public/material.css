@@ -1,0 +1,147 @@
+body {
+    overflow-y: auto;
+    /* permite rolagem */
+}
+
+.conteudo-title{
+    align-self: center;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.container {
+    width: auto;
+    height: auto;
+    position: relative;
+}
+
+.main-mat {
+    text-align: center;
+    padding: 20px;
+}
+
+.main-mat h1 {
+    color: #2c72c7;
+    margin-bottom: 30px;
+}
+
+/* Container do Swiper */
+.swiper {
+    width: 90%;
+    height: 700px;
+    padding-bottom: 50px;
+    /* espaço para as bolinhas */
+    overflow: visible;
+    /* permite que as setas saiam pra fora */
+}
+
+.swiper-wrapper {
+    align-items: stretch;
+    /* garante alinhamento dos cards */
+}
+
+.swiper-slide {
+    background: #4da3ff;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    /* ocupa toda altura disponível */
+}
+
+.swiper-slide h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.swiper-slide iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: 8px;
+    background: white;
+    border: none;
+}
+
+.swiper-slide a {
+    margin-top: 15px;
+    display: inline-block;
+    background: white;
+    color: #4da3ff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.swiper-slide a:hover {
+    background: #2c72c7;
+    color: white;
+}
+
+/* Estilo das setas */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #4da3ff;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Coloca pra fora */
+.swiper-button-prev {
+    left: -70px;
+    /* joga pra fora da esquerda */
+
+}
+
+.swiper-button-next {
+    right: -70px;
+    /* joga pra fora da direita */
+
+}
+
+/* Hover nas setas */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: #4da3ff;
+    color: white;
+}
+
+
+.swiper-button-next,
+.swiper-button-prev {
+    width: 60px;
+    /* tamanho da bolinha */
+    height: 60px;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 28px;
+    /* tamanho da seta dentro */
+    color: #4da3ff;
+    /* cor azul da seta */
+}
+
+/* efeito hover */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background: #4da3ff;
+    /* bolinha azul */
+}
+
+.swiper-button-next:hover::after,
+.swiper-button-prev:hover::after {
+    color: white;
+    /* seta branca */
+}
