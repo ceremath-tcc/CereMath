@@ -1,8 +1,0 @@
-{
-    "deploy": {
-      "env": {
-        "APP_ENV": "production"
-      }
-    }
-  }
-  

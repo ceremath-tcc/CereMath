@@ -29,8 +29,10 @@
         <h2 class="card-title type-2">🔥 Dias seguidos fazendo missão</h2>
         <br>
         <?php
-        echo $_SESSION['username'];
-        echo $_SESSION['id'];
+        if(isset($_SESSION['username'])){
+          echo $_SESSION['username'];
+          echo $_SESSION['id'];
+        }
         ?>
         <p class="error type-1">❌ [missão diária 1]</p>
         <p class="error type-1">❌ [missão diária 2]</p>
