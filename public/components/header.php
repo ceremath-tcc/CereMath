@@ -3,6 +3,7 @@
   <a href="home.php" class="type-2 logo" id="logo">CereMath</a>
   <nav class="menu">
     <?php
+    session_start();
       if(isset($_SESSION['username'])){
         echo "<a href='conta.php' class='btn type-1'><span>👤</span> Conta</a>";
         echo "<a href='conteudos.php' class='btn type-1'><span>📝</span> Lições</a>";

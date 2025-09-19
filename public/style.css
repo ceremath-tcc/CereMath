@@ -177,7 +177,8 @@ form {
 
 /* Inputs */
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"] {
     width: 80%;
     padding: 14px;
     border: none;

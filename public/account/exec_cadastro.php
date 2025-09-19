@@ -8,15 +8,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $controller = new UserController();
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $email = $_POST['email'];
 
     //Insere no banco de dados e finaliza
-    $user = $controller->signup($username, $password);
+    $user = $controller->signup($username, $password, $email);
 
     $_SESSION['id'] = $user['id'];
     if($user['email'] != null){
         $_SESSION['email'] = $user['email'];
     }
     $_SESSION['username'] = $username;
-    $_SESSION['id'] = $id;
     header('Location: /../public/home.php');
 }

@@ -2,5 +2,5 @@
     session_start();
     unset($_SESSION['username']);
 
-    header('Location: login.php');
+    header('Location: /../public/login.php');
     exit();

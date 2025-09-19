@@ -181,3 +181,7 @@ li.type-1.naoFeito{
     color: white;
     /* seta branca */
 }
+
+.warning{
+    text-align: center;
+}

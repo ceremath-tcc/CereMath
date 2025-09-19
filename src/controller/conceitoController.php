@@ -47,10 +47,48 @@ class ConceitoController
         $db = Connection::getConnection();
 
         // Verifica se já existe
-        $stmt = $db->prepare('SELECT uc.id_user, c.nome AS conceito, uc.acertos, uc.erros, uc.concluido FROM 
-    user_Conceito uc JOIN Conceito c ON uc.id_conceito = c.id
-	WHERE 
-    uc.id_user = ?');
+        $stmt = $db->prepare('SELECT uc.id_user, 
+            c.materia, 
+            SUM(uc.acertos) AS total_acertos, 
+            SUM(uc.erros) AS total_erros, 
+            COUNT(*) AS total_conceitos, 
+            SUM(uc.concluido) AS conceitos_concluidos
+        FROM 
+            user_Conceito uc
+        JOIN 
+            Conceito c ON uc.id_conceito = c.id
+        WHERE 
+            uc.id_user = ?
+        GROUP BY 
+            uc.id_user, c.materia;
+        ');
+        $stmt->execute([$id]);
+        $progresso = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $progresso;
+    }
+
+    public function showPorcentagem($id)
+    {
+        $db = Connection::getConnection();
+
+        // Verifica se já existe
+        $stmt = $db->prepare('SELECT uc.id_user,
+            c.materia,
+            COUNT(*) AS total_conceitos,
+            SUM(CASE WHEN uc.concluido = 2 THEN 1 ELSE 0 END) AS concluidos,
+            ROUND(
+                (SUM(CASE WHEN uc.concluido = 2 THEN 1 ELSE 0 END) / COUNT(*)) * 100,
+            2) AS porcentagem_concluidos
+        FROM 
+            user_Conceito uc
+        JOIN 
+            Conceito c ON uc.id_conceito = c.id
+        WHERE 
+            uc.id_user = ?
+        GROUP BY 
+            uc.id_user, c.materia;
+        ');
         $stmt->execute([$id]);
         $progresso = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

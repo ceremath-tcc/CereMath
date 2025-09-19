@@ -1,14 +1,6 @@
-<?php
-session_start();
-
-require_once("./account/contaManager.php ");
-
-$labels  = array_column($progresso, 'conceito');
-$acertos = array_column($progresso, 'acertos');
-$erros   = array_column($progresso, 'erros');
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,16 +9,44 @@ $erros   = array_column($progresso, 'erros');
   <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
-<?php include 'components/header.php'; include 'components /fonts.php'; require_once './account/login-allowed.php';  require_once './components/footer.php'; ?>
+  <?php include 'components/header.php';
+  require_once("./account/contaManager.php ");
+  //Agora vai guardar o progresso do usuario dentro da array $progresso
+  $progresso = $controllerC->showProgressao($_SESSION['id']);
+
+  $labels = array_column($progresso, 'materia');
+  $acertos = array_column($progresso, 'total_acertos');
+  $erros = array_column($progresso, 'total_erros');
+  $labelsFiltrados = [];
+  $acertosFiltrados = [];
+  $errosFiltrados = [];
+
+  foreach ($progresso as $row) {
+    if ($row['total_acertos'] > 0 || $row['total_erros'] > 0) {
+      $labelsFiltrados[] = $row['materia'];
+      $acertosFiltrados[] = $row['total_acertos'];
+      $errosFiltrados[] = $row['total_erros'];
+    }
+  }
+
+  include 'components /fonts.php';
+  require_once './account/login-allowed.php';
+  require_once './components/footer.php'; ?>
 
   <div class="container-conta">
 
     <div class="card">
       <div class="title type-2"><span class="emoji">🧑‍💼</span> Informações da conta:</div>
       <div class="row">
-        <div class="tag type-1">#<?php echo $_SESSION['id'];?> - <?php echo $_SESSION['username'];?></div>
-        <div class="tag type-1">[<?php if(isset($_SESSION['email'])){ echo $_SESSION['email'];} else { echo "Não tem email";}?>]</div>
+        <div class="tag type-1">#<?php echo $_SESSION['id']; ?> - <?php echo $_SESSION['username']; ?></div>
+        <div class="tag type-1">
+          [<?php if (isset($_SESSION['email'])) {
+            echo $_SESSION['email'];
+          } else {
+            echo "Não tem email";
+          } ?>]</div>
         <div class="tag type-1">[*********]</div>
       </div>
       <div class="divider"></div>
@@ -46,7 +66,7 @@ $erros   = array_column($progresso, 'erros');
           <span class="type-1"><span class="dot" style="background: var(--vermelho);"></span> Erros</span>
         </div>
       </div>
-      <div class="chart-area">
+      <div class="chart-area" id="chart-area">
         <canvas id="grafico" height="180"></canvas>
       </div>
     </div>
@@ -56,51 +76,56 @@ $erros   = array_column($progresso, 'erros');
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    const labels  = <?= json_encode($labels, JSON_UNESCAPED_UNICODE) ?>;
-    const acertos = <?= json_encode($acertos) ?>;
-    const erros   = <?= json_encode($erros) ?>;
+    const labels = <?= json_encode($labelsFiltrados, JSON_UNESCAPED_UNICODE) ?>;
+    const acertos = <?= json_encode($acertosFiltrados) ?>;
+    const erros = <?= json_encode($errosFiltrados) ?>;
 
-    const ctx = document.getElementById('grafico').getContext('2d');
+    if (labels.length === 0) {
+      document.getElementById("chart-area").innerHTML = "<br><p class='type-1 warning'>Nenhum acerto... por enquanto</p>";
+    } else {
+      const ctx = document.getElementById('grafico').getContext('2d');
 
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels,
-        datasets: [
-          {
-            label: 'Acertos',
-            data: acertos,
-            backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--verde').trim(),
-            borderRadius: 6,
-            maxBarThickness: 56,
-          },
-          {
-            label: 'Erros',
-            data: erros,
-            backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--vermelho').trim(),
-            borderRadius: 6,
-            maxBarThickness: 56,
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: { mode: 'index', intersect: false }
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [
+            {
+              label: 'Acertos',
+              data: acertos,
+              backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--verde').trim(),
+              borderRadius: 6,
+              maxBarThickness: 56,
+            },
+            {
+              label: 'Erros',
+              data: erros,
+              backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--vermelho').trim(),
+              borderRadius: 6,
+              maxBarThickness: 56,
+            }
+          ]
         },
-        scales: {
-          x: { grid: { display: false } },
-          y: {
-            beginAtZero: true,
-            max: 100,
-            ticks: { stepSize: 20 },
-            grid: { color: 'rgba(0,0,0,.06)' }
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { mode: 'index', intersect: false }
+          },
+          scales: {
+            x: { grid: { display: false } },
+            y: {
+              beginAtZero: true,
+              max: 100,
+              ticks: { stepSize: 20 },
+              grid: { color: 'rgba(0,0,0,.06)' }
+            }
           }
         }
-      }
-    });
+      });
+    }
   </script>
 </body>
+
 </html>

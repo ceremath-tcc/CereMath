@@ -15,6 +15,3 @@ if ($check != $_SESSION['id']) {
     unset($_SESSION['email']);
     header('Location: home.php');
 }
-
-//Agora vai guardar o progresso do usuario dentro da array $progresso
-$progresso = $controllerC->showProgressao($_SESSION['id']);

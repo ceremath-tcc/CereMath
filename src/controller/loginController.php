@@ -27,7 +27,7 @@ class UserController
 
 
 
-    public function signup($username, $password){
+    public function signup($username, $password, $email){
         $db = Connection::getConnection();
 
         // Verifica se já existe
@@ -42,8 +42,8 @@ class UserController
         $senha_hash = password_hash($password, PASSWORD_DEFAULT);
 
         // Inserindo dentro do banco de dados
-        $stmt = $db->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-        $stmt->execute([$username, $senha_hash]);
+        $stmt = $db->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
+        $stmt->execute([$username, $senha_hash, $email]);
 
         //Guarda o id do usuario
         $log = $db->prepare("SELECT id, email FROM Users WHERE username = ?");

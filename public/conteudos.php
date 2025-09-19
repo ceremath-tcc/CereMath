@@ -14,7 +14,10 @@
   <?php require_once 'components/header.php';
   require_once 'components/fonts.php';
   require_once './components/footer.php';
-  require_once './account/login-allowed.php' ?>
+  require_once './account/login-allowed.php';
+
+  
+  ?>
 
   <div class="main-mat">
     <h1 class="type-2 conteudo-title">📝 Conteudos e Lições</h1>

@@ -20,23 +20,28 @@
         <hr>
             <div class="login-container">
                 <br>
-               <form action="account/exec_cadastro.php" method="POST">
+                <form action="account/exec_cadastro.php" method="POST">
                     <br>
-                    <h1 class="message type-2" >Seja bem-vindo!</h1>
+                    <h1 class="message type-2" >Seja bem vindo! </h1>
                     <br><br>
-                    <label for="username" class="text type-2">Nome de Usuário ou Email:</label>
-                    <input type="text" id="username" name="username" placeholder="Digite seu Usuário ou Email" minlength="3" required>
-                    <br><br><br><br><br>
+                    <label for="username" class="text type-2">Nome de Usuário:</label>
+                    <input type="text" id="username" name="username" placeholder="Insira seu usurário" minlength="3">
+                    <br><br>
+                    <label for="email" class="text type-2">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Insira o E-mail: ceremath.tcc@gmail.com" minlength="3">
+                    <br><br>
                     <label for="username" class="text type-2">Sua Senha:</label>
-                    <input type="password" id="password" name="password" placeholder="Insira uma Senha" minlength="8" required>
-                    <br><br><br>
-                    <p class="sub-text type-1">Já tem uma conta? <a id="criar-conta" href="login.php">Fazer Login</a>
+                    <input type="password" id="password" name="password" placeholder="Insira sua senha" minlength="8">
                     <?php
-                        if (isset($_GET['error']) && $_GET['error'] == '1') {
-                            echo '<br><p style="color: red;">Usuario ja existe, tente novamente.</p>';
+                        if (isset($_GET['error']) && $_GET['error'] == '2') {
+                            echo '<br><p style="color: red;">Usuário ou senha inválidos. Tente novamente.</p>';
                         }
                     ?>
-                    <input type="submit" class="submit" value="Cadastrar Login"> 
+                    <br><br>
+                    <p class="sub-text type-1">Já tem conta? <a id="criar-conta" href="login.php">Fazer Login.</a></p>
+                    <br>    
+                    <input type="submit" class="submit type-2"value="Entrar"> 
+
                 </form>
 
             </div>
