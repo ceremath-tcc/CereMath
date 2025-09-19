@@ -34,20 +34,39 @@
   include 'components /fonts.php';
   require_once './account/login-allowed.php';
   require_once './components/footer.php'; ?>
-
+  <div class="back" id="back"></div>
+  <div class="modal" id="modal">
+    <div class="flex">
+      <h2 class="type-2">Confirme sua identidade</h2>
+      <button class="exit" id="exit">X</button>
+    </div>
+      <br>
+      <div class="divider"></div><br>
+      <form action="" method="POST">
+        <br><br>
+        <label for="password" class="type-1">Digite sua senha</label>
+        <input type="password" id="password" name="password" placeholder="Senha..."><br><br><br><br>
+        <br>
+        <div class="divider"></div><br>
+        <input type="submit" value="Verificar">
+      </form>
+  </div>
   <div class="container-conta">
-
+  
     <div class="card">
       <div class="title type-2"><span class="emoji">🧑‍💼</span> Informações da conta:</div>
+      <a class="sub type-2">-- Desejo mudar minhas informações</a>
+      <br>  
       <div class="row">
-        <div class="tag type-1">#<?php echo $_SESSION['id']; ?> - <?php echo $_SESSION['username']; ?></div>
+        <div class="tag type-1">#<?php echo $_SESSION['id']; ?> - Usuario, <?php echo $_SESSION['username']; ?></div>
         <div class="tag type-1">
-          [<?php if (isset($_SESSION['email'])) {
-            echo $_SESSION['email'];
+          <?php if (isset($_SESSION['email'])) {
+            echo "E-mail: " . $_SESSION['email'];
           } else {
             echo "Não tem email";
-          } ?>]</div>
-        <div class="tag type-1">[*********]</div>
+          } ?>
+        </div>
+        <div class="tag type-1">Senha: ************</div>
       </div>
       <div class="divider"></div>
       <div class="actions">
@@ -56,7 +75,7 @@
       </div>
     </div>
     <br>
-    <hr>
+    <div class="divider"></div>
     <br>
     <div class="card">
       <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
@@ -75,7 +94,9 @@
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./js/conta.js"></script>
   <script>
+    
     const labels = <?= json_encode($labelsFiltrados, JSON_UNESCAPED_UNICODE) ?>;
     const acertos = <?= json_encode($acertosFiltrados) ?>;
     const erros = <?= json_encode($errosFiltrados) ?>;

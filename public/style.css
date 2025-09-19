@@ -76,6 +76,7 @@ html {
     border-bottom: 2px solid #d3dbe5;
     background-color: #eaecee;;
     position: relative;
+    z-index: 998;
     /* pra manter o logo fixo na esquerda */
 }
 
@@ -178,7 +179,7 @@ form {
 /* Inputs */
 input[type="text"],
 input[type="password"],
-input[type="email"] {
+[type="email"] {
     width: 80%;
     padding: 14px;
     border: none;
