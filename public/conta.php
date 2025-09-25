@@ -51,15 +51,16 @@
         <input type="submit" value="Verificar">
       </form>
   </div>
+
   <div class="container-conta">
   
     <div class="card">
       <div class="title type-2"><span class="emoji">🧑‍💼</span> Informações da conta:</div>
-      <a class="sub type-2">-- Desejo mudar minhas informações</a>
-      <br>  
+      <a class="sub type-2" id="mudar">-- Desejo mudar minhas informações</a>
+      <br><br>
       <div class="row">
-        <div class="tag type-1">#<?php echo $_SESSION['id']; ?> - Usuario, <?php echo $_SESSION['username']; ?></div>
-        <div class="tag type-1">
+        <div class="tag type-1" id="user">#<?php echo $_SESSION['id']; ?> - Usuario, <?php echo $_SESSION['username']; ?></div>
+        <div class="tag type-1" id="email">
           <?php if (isset($_SESSION['email'])) {
             echo "E-mail: " . $_SESSION['email'];
           } else {

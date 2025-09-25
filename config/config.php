@@ -4,5 +4,5 @@
         'host' => 'localhost',
         'user' => 'root',
         'pass' => 'aluno123',
-        'name' => 'Cerebrino'
+        'name' => 'Ceremath'
     ];

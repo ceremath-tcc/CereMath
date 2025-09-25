@@ -3,6 +3,7 @@ body {
   background: #f4f7fb;
 }
 
+
 .container-home {
   width: 100%;
   max-width: 1400px;
@@ -97,4 +98,17 @@ body {
 
 .footer p {
   font-size: 17px;
+}
+
+.fonte {
+  font-style: italic;
+  text-align: center;
+  font-size: 27px;
+  color: #1f2937;
+}
+
+.autor {
+  font-size: 20px;
+  text-decoration: none;
+  color: #1f2937;
 }
