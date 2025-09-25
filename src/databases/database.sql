@@ -1,6 +1,6 @@
-    create database Cerebrino;
+    create database Ceremath;
     
-    use Cerebrino;
+    use Ceremath;
     
     /*USUARIO*/
     CREATE TABLE Users (
@@ -17,14 +17,16 @@
         materia varchar(255) NOT NULL
     );
     
-    Create table user_Conceito(
-        id_user int not null,
-        id_conceito int not null,	
-        concluido TINYINT NOT NULL DEFAULT 0,
-        atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        PRIMARY KEY (id_user, id_conceito), 
-        foreign key(id_user) references users(id),
-        foreign key(id_conceito) references Conceito(id)
+    Create table user_Conceito( 
+		id_user int not null, 
+		id_conceito int not null, 
+		concluido TINYINT NOT NULL DEFAULT 0, 
+		acertos int not null DEFAULT 0, 
+		erros int not null DEFAULT 0, 
+		atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+		PRIMARY KEY (id_user, id_conceito), 
+		foreign key(id_user) references users(id), 
+		foreign key(id_conceito) references Conceito(id) 
     );
     
     -- Conquistas
