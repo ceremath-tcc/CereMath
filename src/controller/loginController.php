@@ -1,11 +1,11 @@
 <?php
-// src/controllers/ProductController.php
+// src/controllers/Productcontroller.php
 
 require_once __DIR__ . '/../model/login.php';
-require_once __DIR__ . './conceitoController.php';
+require_once __DIR__ . './conceitocontroller.php';
+require_once __DIR__ . './conquistacontroller.php';
 
-
-class UserController
+class Usercontroller
 {
     public function login($username, $password) {
         $db = Connection::getConnection();
@@ -51,11 +51,16 @@ class UserController
         $id = $log->fetch();
         $idUsuario = $id['id']; // pega só o número do ID
 
-        //Inicia o controller conceito 
-        $controller = new ConceitoController();
+        //Inicia o controller conceito e cons
+        $controllerCon = new Conceitocontroller();
+        $controllerCq = new ConquistaController();
 
-        //Coloca o progresso do usuario no banco de dados
-        $controller->addProgressao($idUsuario);
+        //Coloca o progresso do usuario no banco de dados (Vai estar vazio)
+        $controllerCon->addProgressao($idUsuario);
+        $controllerCq->addProgressao($idUsuario);
+
+        unset($controllerCon);
+        unset($controllerCq);
 
         return $id;
     }
