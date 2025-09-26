@@ -1,7 +1,8 @@
 <!-- header.php -->
 <header class="topbar">
-  <a href="home.php" class="type-2 logo" id="logo">CereMath</a>
+  
   <nav class="menu">
+    <a href="home.php" class="type-2 logo" id="logo">CereMath</a>
     <?php
     session_start();
       if(isset($_SESSION['username'])){

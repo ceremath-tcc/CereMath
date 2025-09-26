@@ -9,8 +9,9 @@
 
 </head>
 <body>
-<?php require_once './components/header.php'; require_once './components/footer.php'; require_once './components/fonts.php'; require_once './components/frase.php'; ?>
 
+<?php require_once './components/header.php'; require_once './components/footer.php'; require_once './components/fonts.php'; require_once './components/frase.php'; ?>
+  
   <div class="container-home">
     <h1 class="h1-home type-2 ">Seja bem-vindo novamente, <span style="color:#000;"><?php if(isset($_SESSION['username'])){ echo $_SESSION['username'];} else { echo "Visitante"; } ?>.</php></span></h1><br>
 
@@ -37,5 +38,44 @@
         
     </div>
   </div>
+<br><br><br>
+  <section class="sobre-projeto">
+  <div class="container-sobre">
+    <h2 class="titulo-sobre type-2">Sobre o Nosso Projeto</h2>
+    <p class="intro-sobre type-1">
+      Nosso projeto tem como objetivo transformar o aprendizado de matemática em algo mais acessível, 
+      dinâmico e divertido para os alunos do ensino médio.
+    </p>
+
+    <div class="cards-sobre">
+      <div class="card-sobre">
+        <h3 class="card-sobre-title type-2">🎯 Missão</h3>
+        <p class="card-sobre-text type-1">
+          Oferecer uma plataforma intuitiva que incentive o estudo da matemática de forma prática e envolvente.
+        </p>
+      </div>
+      
+      <div class="card-sobre">
+        <h3 class="card-sobre-title type-2">👁️ Visão</h3>
+        <p class="card-sobre-text type-1">
+          Ser referência em educação digital, aproximando tecnologia e conhecimento para todos.
+        </p>
+      </div>
+      
+      <div class="card-sobre">
+        <h3 class="card-sobre-title type-2">💡 Valores</h3>
+        <p class="card-sobre-text type-1">
+          Inovação, acessibilidade e compromisso com a aprendizagem dos estudantes.
+        
+      
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
+  <br><br><br><br>
+
+
 </body>
 </html>

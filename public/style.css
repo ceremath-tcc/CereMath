@@ -7,7 +7,9 @@
 body,
 html {
     height: 100%;
+
     width: 100%;    
+
     background-color: #f5f7fa;
 }
 
@@ -27,11 +29,12 @@ html {
 /* RESPONSAVEIS PELO HEADER*/
 .logo{
     font-size: 30px;
-    position: fixed;
+
     left: 20%;
 }
 #logo {
-    margin-top: 5px;
+    position: relative;
+    left: -67%;
     color: #4a90e2;
     font-family: 'DM Sans', sans-serif;
     font-weight: bold;
@@ -55,6 +58,7 @@ html {
     align-items: center;
     text-decoration: none;
     /* para os <a> ficarem como botão */
+    
 }
 
 .btn:hover {
@@ -70,7 +74,7 @@ html {
     background: #f7f9fc;
     border-bottom: 2px solid #d3dbe5;
     background-color: #eaecee;;
-    position: relative;
+    position: RELATIVE;
     z-index: 998;
     /* pra manter o logo fixo na esquerda */
 }
