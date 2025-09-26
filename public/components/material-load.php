@@ -18,7 +18,7 @@ for ($i = 0; $i < count($conceitos); $i++) {
                 <div class='line'></div>
                 <ul>
                     <li class='type-1 ";
-                    if($conceitos[0]["concluido"] == 0){echo "emAndamento'><a class='emAndamento' href='teste.php?titulo=" . $i+1 . "' >" . $conceitos[0]["nome"] . "</a>"; } else { echo "feito'>" . $conceitos[0]["nome"]; };
+                    if($conceitos[0]["concluido"] == 0){echo "emAndamento'><a class='emAndamento' href='ia.php?titulo=" . $i+1 . "' >" . $conceitos[0]["nome"] . "</a>"; } else { echo "feito'>" . $conceitos[0]["nome"]; };
                     echo  "</li>";
                     $contProgresso +=1;
   } else {

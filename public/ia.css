@@ -1,0 +1,194 @@
+body {
+  background-color: #f5f7fa;
+  padding: 1%;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.type-2 {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.type-1 {
+  font-family: 'Arimo', sans-serif;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.content-box {
+  display: flex;
+  /* coloca os filhos lado a lado */
+  gap: 20px;
+  height: 89vh;
+}
+
+.study-box {
+  position: relative;
+
+  flex: 1;
+  gap: 10px;
+  /* cada div ocupa o mesmo tamanho */
+  padding: 20px;
+  background: #83c3ff;
+  border-radius: 10px;
+  height: 100%;
+
+  overflow-y: auto;
+  /* adiciona scroll na vertical */
+  max-height: 100%;
+  /* não deixa ultrapassar a altura */
+}
+
+.center{
+  height: 100%;
+  display: flex; /* Transforma o contêiner em um flex container */
+  text-align: center;
+  justify-content: center; /* Centraliza horizontalmente */
+}
+
+.study-box::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari e Edge */
+}
+
+
+.scroll-btn {
+  position: absolute;
+  bottom: 7%;
+  align-self: center;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: 0.5s;
+}
+
+.scroll-btn:hover {
+  background: #0056b3;
+}
+
+#chat-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 12px;
+  margin: 8px 0;
+
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.ia {
+  background: #e9ebed;
+  align-self: flex-start;
+  /* esquerda */
+  border-bottom-left-radius: 0;
+}
+
+iframe {
+  border-radius: 15px;
+  box-shadow: 10px 10px 0 white
+}
+
+.user {
+  background: #d8ecff;
+  align-self: flex-end;
+  /* direita */
+  border-bottom-right-radius: 0;
+}
+
+.container-ia{
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+  /* cada div ocupa o mesmo tamanho */
+  padding: 20px;
+
+  overflow-y: auto;
+  /* adiciona scroll na vertical */
+  max-height: 85%;
+  /* não deixa ultrapassar a altura */
+}
+
+.container-ia::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari e Edge */
+}
+
+
+#loadingSpinner {
+  visibility: hidden;
+  width: 24px;
+  height: 24px;
+  border: 3px solid #ccc;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  border-radius: 10px 0 0 10px;
+
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+}
+
+.input-wrapper button {
+  padding: 15px 15px;
+  border: none;
+  background: #3498db;
+  color: #fff;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+}
+
+.input-wrapper button:hover {
+  background: #2980b9;
+}
+
+.button-remove{
+  padding: 0.5%;
+  border: none;
+  background: #3498db;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 250px;
+}
+
+.ia-default{
+  padding: 10%;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 40px;
+}

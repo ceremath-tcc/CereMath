@@ -34,13 +34,15 @@
         $pdfs = array_values(array_filter($files, function ($file) use ($dir) {
           return pathinfo($file, PATHINFO_EXTENSION) === "pdf";
         }));
+        
 
         // Verifica se há PDFs
         if (count($pdfs) > 0) {
           foreach ($pdfs as $pdfFile) {
+            $nomeSemExtensao = pathinfo($pdfFile, PATHINFO_FILENAME);
             $pdfPath = $dir . $pdfFile;
             echo "<div class='swiper-slide'>
-                  <h2 class='type-2'>Conjuntos</h2>
+                  <h2 class='type-2'>" . $nomeSemExtensao . "</h2>
                   <iframe src='" . $pdfPath . "'></iframe>
                   <a href='" . $pdfPath . "' class='type-2' download>⬇ Baixar PDF</a>
                 </div>";
