@@ -112,3 +112,59 @@ body {
   text-decoration: none;
   color: #1f2937;
 }
+
+.sobre-projeto {
+  background: linear-gradient(135deg, #fdfdfd, #f1f1f1);
+  padding: 60px 20px;
+  margin-top: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.titulo-sobre {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.intro-sobre {
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #444;
+}
+
+.cards-sobre {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.card-sobre {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.card-sobre:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card-sobre-title {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #0077b6;
+}
+
+.card-sobre-text {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
