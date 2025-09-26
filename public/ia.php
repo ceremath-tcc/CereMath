@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Area de Estudo</title>
     <link rel="stylesheet" href="ia.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <?php
-    session_start();
+    require_once './components/header.php';
+    require_once 'components/footer.php';
     require_once './components/fonts.php';
     header('Content-Type: text/html; charset=utf-8');
     mb_internal_encoding("UTF-8"); ?>
+    <br>
     <div class="content-box">
         <!--Aqui ficara os materiais-->
         <div class="study-box center">
