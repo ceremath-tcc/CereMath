@@ -31,18 +31,23 @@
     
     -- Conquistas
     Create table Conquista(
-        id INT PRIMARY KEY auto_increment,  -- ID da conquista
-        nome VARCHAR(255),           -- Nome da Conquista
-        Descricao NVARCHAR(500)       -- A descrição da Conquista
+        id INT PRIMARY KEY auto_increment,
+        nome VARCHAR(255),
+        descricao NVARCHAR(500),
+        raridade NVARCHAR(500)
     );
     
+    
     Create table user_Conquista(
-        id_user int not null primary key,
+        id_user int not null,
         id_conquista int not null,	
-        conquistas bit not null,
+        concluido TINYINT NOT NULL DEFAULT 0,  
+        atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        primary key (id_user, id_conquista),
         foreign key(id_user) references users(id),
         foreign key(id_conquista) references Conquista(id)
     );
+    
     
     -- Tabela principal com a pergunta base e placeholders
     CREATE TABLE perguntas (
@@ -66,6 +71,32 @@
         opcoes JSON NOT NULL, -- Ex: '{"op_c": 0, "op_2": 1, "op_3": 2, "op_4": 3}' - op_c é a correta!
         FOREIGN KEY (pergunta_id) REFERENCES perguntas(id) ON DELETE CASCADE
     );
+    
+INSERT INTO Conquista (nome, descricao, raridade) VALUES
+('Bem vindo', 'Conquistada por fazer a primeira conta', 'Comum'),
+('Primeiros Passos', 'Concluiu a primeira lição', 'Comum'),
+('Explorador', 'Acessou 5 conteúdos diferentes', 'Comum'),
+('Curioso(a)', 'Fez a primeira pergunta para a IA', 'Comum'),
+('Navegador(a)', 'Visitou tudo do site', 'Comum'),
+('Foco Total', 'Concluiu 3 lições sem pular nada', 'Rara'),
+('Ritmo de Estudos', 'Estudou todos os dias durante uma semana', 'Rara'),
+('Águia', 'Concluiu uma lição sem pedir ajuda à IA', 'Rara'),
+('Geômetra', 'Concluiu todo conteúdo de geometria', 'Épica'),
+('Funções', 'Concluiu todas as lições de funções', 'Épica'),
+('Estatístico(a)', 'Finalizou todo conteúdo de estatística e probabilidade', 'Épica'),
+('Persistente', 'Repetiu uma lição até acertar todas as respostas', 'Rara'),
+('Desafiante', 'Tentou resolver uma lição mais difícil antes do recomendado', 'Rara'),
+('Nunca desista', 'Tentou mais de duas vezes fazer a lição depois de não passar', 'Rara'),
+('Memória de elefante', 'Concluiu uma lição que já havia visto novamente', 'Rara'),
+('Colecionador(a)', 'Obteve todas as conquistas de uma categoria', 'Lendária'),
+('Primeiro Conjunto', 'Concluiu a lição de conjuntos', 'Comum'),
+('União e Interseção', 'Resolveu dois exercícios com um desses dois', 'Comum'),
+('Parábola básica', 'Concluiu a lição de função quadrática', 'Comum'),
+('Linear Iniciante', 'Concluiu a lição de função afim', 'Comum'),
+('Log Iniciante', 'Concluiu a lição de logaritmos', 'Comum'),
+('Perfil completo', 'Preencheu tudo sobre seu perfil', 'Comum'),
+('Primeiro Histórico', 'Viu o histórico pelo menos uma vez das lições concluídas', 'Comum');
+
     
     insert into Conceito(nome, materia) values
     ("Elemento — Pertinência", "Conjuntos"),

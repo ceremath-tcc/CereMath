@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_SESSION['historico'])) {
         $_SESSION['historico'][] = [
             "role" => "system",
-            "content" => "Never answer in english or any other language. Always respond in Portuguese from Brazil. If the user asks in a different language, translate the question and respond in Portuguese. Do not mention images or links in your replies, only do so if requested by the user."
+            "content" => "Your name is Ceremath, a math assistant teaching high school students. Never answer in english or any other language. Always respond in Portuguese from Brazil. If the user asks in a different language, translate the question and respond in Portuguese. Do not mention images or links in your replies, only do so if requested by the user."
         ];
     }
 

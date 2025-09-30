@@ -19,7 +19,7 @@
     <br>
     <div class="content-box">
         <!--Aqui ficara os materiais-->
-        <div class="study-box center">
+        <div class="study-box">
             <?php
             $dir = "materiais/"; // pasta onde estão os arquivos
             $files = array_diff(scandir($dir), array('.', '..')); // pega lista, ignora "." e ".."
@@ -33,14 +33,20 @@
                 $pdf = $dir . $pdfs[$pos];
                 echo "<iframe src='$pdf#toolbar=0' width='95%' height='95%'></iframe>";
             } else {
-                echo "Nenhum PDF nessa posição.";
+                echo "Nenhum material encontrado.";
             }
             ?>
+            <br>
+            <button class="btn-passar"><a href="teste.php" class="link">Ir para o questionario.</a></button>
         </div>
 
         <!--Aqui fica a IA-->
         <div class="study-box" id="chat-box">
-            <button class="button-remove type-2" id="remove"><a href="./components/removehistory.php?titulo=<?php if(isset($_GET['titulo'])){ echo $_GET['titulo'];} ?>">Reinicie sua conversa</a></button>
+            <button class="button-remove type-2" id="remove"><a
+                    href="./components/removehistory.php?titulo=<?php if (isset($_GET['titulo'])) {
+                        echo $_GET['titulo'];
+                    } ?>">Reinicie
+                    sua conversa</a></button>
             <div class="container-ia" id="ia-box">
                 <!--Responsavel por carregar as respostas da IA-->
                 <?php
@@ -52,11 +58,11 @@
                         $content = htmlspecialchars_decode($message['content'], ENT_QUOTES);
 
                         if ($role == "user") {
-                            echo "<div class='message user'>";
+                            echo "<div class='message1 user type-2'>";
                             echo $content;
                             echo "</div>";
                         } elseif ($role == "assistant") {
-                            echo "<div class='message ia'>";
+                            echo "<div class='message1 ia type-2'>";
                             echo $content;
                             echo "</div>";
                         }
@@ -67,9 +73,13 @@
                 ?>
             </div>
             <div id="loadingSpinner"></div>
-            <form method="POST" id="form" action="set.php?titulo=<?php if(isset($_GET['titulo'])){ echo $_GET['titulo'];}?>">
+            <form method="POST" id="form"
+                action="set.php?titulo=<?php if (isset($_GET['titulo'])) {
+                    echo $_GET['titulo'];
+                } ?>">
                 <div class="input-wrapper">
-                    <input type="text" name="valor" id="valor" placeholder="Digite sua questão..." required class="type-1">
+                    <input type="text" name="valor" id="valor" placeholder="Digite sua questão..." required
+                        class="type-1">
                     <button type="submit">➤</button>
                 </div>
             </form>

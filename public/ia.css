@@ -67,11 +67,13 @@ a{
   flex-direction: column;
 }
 
-.message {
+.message1 {
   max-width: 70%;
   padding: 10px 15px;
   border-radius: 12px;
   margin: 8px 0;
+  font-size: 15px;
+  color: #2c3e50;
 
   word-wrap: break-word;
   word-break: break-word;
@@ -136,6 +138,8 @@ iframe {
 .input-wrapper {
   display: flex;
   align-items: center;
+  border-radius: 15px 8px 8px 15px;
+  background-color: #fff;
 }
 
 .input-wrapper input {
@@ -143,6 +147,7 @@ iframe {
   padding: 15px;
   border: none;
   border-radius: 10px 0 0 10px;
+  background-color: #fff;
 
   bottom: 10px;
   left: 10px;
@@ -155,6 +160,7 @@ iframe {
   background: #3498db;
   color: #fff;
   border-radius: 0 8px 8px 0;
+  border: none;
   cursor: pointer;
 }
 
@@ -180,4 +186,28 @@ iframe {
   color: #fff;
   font-weight: bold;
   font-size: 40px;
+}
+
+.btn-passar{
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.btn-passar:hover{
+  background-color: #2d82bb;
+  cursor: pointer;
+}
+
+.link{
+  display: block;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
 }

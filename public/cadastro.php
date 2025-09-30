@@ -15,7 +15,7 @@
 
     <canvas id="background"></canvas>
     <div class="inclinado">
-    <a href="home.php"> <h1 class="title type-2" id="logo">CereMath</h1></a>
+    <a href="home.php"> <h1 class="title type-2" id="logo1">CereMath</h1></a>
         <h1 class="message type-2" id="login">Faça seu cadastro</h1>
         <hr>
             <div class="login-container">

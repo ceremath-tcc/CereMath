@@ -40,6 +40,10 @@ html {
     font-weight: bold;
 }
 
+#logo1 {
+    color: #4a90e2;
+}
+
 #logo:hover {
     transition: 0.3s;
     transform: scale(1.05);

@@ -17,7 +17,7 @@ for ($i = 0; $i < 10; $i++) {
       echo "'>";
     }
   } else {
-    echo "'>";
+    echo " locked'>";
   }
   echo "<div class='icon'>🏅</div>
             <div>
