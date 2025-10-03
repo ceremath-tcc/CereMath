@@ -49,6 +49,7 @@ body {
   padding: 30px;
   border-radius: 16px;
   box-shadow: 20px 20px 0px 0px #dadada;
+  transition: all 0.5s ease;
 
 }
 
@@ -148,12 +149,16 @@ body {
   padding: 25px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  cursor: pointer;
 }
 
 .card-sobre:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 30px 30px 0px 0px #dadada;
 }
 
 .card-sobre-title {

@@ -13,7 +13,7 @@ body {
 
 /* Cabeçalho */
 .content h1 {
-    font-size: 26px;
+    text-align: center;
     color: #2c72c7;
     font-weight: bold;
     margin-bottom: 20px;

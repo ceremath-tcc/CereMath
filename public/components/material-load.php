@@ -11,7 +11,7 @@ for ($i = 0; $i < count($conceitos); $i++) {
   if ($i == 0) {
     echo "<div class='swiper-slide'>
                 <div class='top'>
-                    <h1 class='type-2'>" . $conceitos[0]["materia"] . "</h1>
+                    <h1 class='type-2'>" . $contProgresso+1 . " - " . $conceitos[0]["materia"] . "</h1>
                     <h2 class='type-2'> Progresso: " . $progresso[$contProgresso]['porcentagem_concluidos'] ."%</h2>
                     
                 </div>
@@ -27,7 +27,7 @@ for ($i = 0; $i < count($conceitos); $i++) {
             </div>
             <div class='swiper-slide'>
                 <div class='top'>
-                    <h1 class='type-2'>" . $conceitos[$i]["materia"] . "</h1>
+                    <h1 class='type-2'>" . $contProgresso+1 . " - " . $conceitos[$i]["materia"] . "</h1>
                     <h2 class='type-2'> Progresso: " . $progresso[$contProgresso]['porcentagem_concluidos'] ."%</h2>
                 </div>
                 <div class='line'></div>

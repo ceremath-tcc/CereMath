@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Caminho do script Python
-    $caminho_script = "./python/ia.py";
+    $caminho_script = "../python/ia.py";
 
     // Envia o valor para a função Python
     $process = proc_open(
@@ -87,6 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Redireciona para a mesma página com o parâmetro 'titulo'
     $titulo = $_GET['titulo'] ?? '';
     $titulo = intval($titulo);
-    header("Location: ./ia.php?titulo=" . urlencode($titulo));
+    header("Location: ../ia.php?titulo=" . urlencode($titulo));
     exit;
 }

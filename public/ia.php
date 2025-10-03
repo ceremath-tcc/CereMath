@@ -37,7 +37,7 @@
             }
             ?>
             <br>
-            <button class="btn-passar"><a href="teste.php" class="link">Ir para o questionario.</a></button>
+            <button class="btn-passar type-2"><a href="teste.php" class="link space">Ir para o questionario.</a></button>
         </div>
 
         <!--Aqui fica a IA-->
@@ -52,21 +52,28 @@
                 <?php
                 // Se não existir histórico, não mostra nada
                 if (isset($_SESSION['historico'])) {
-                    //Define o tamanho do historico
-                    foreach ($_SESSION['historico'] as $message) {
-                        $role = $message['role'];
-                        $content = htmlspecialchars_decode($message['content'], ENT_QUOTES);
+                    //Se só tiver uma questao sem resposta nao envia
+                    if(count($_SESSION['historico']) > 2){
+                        //Define o tamanho do historico
+                        foreach ($_SESSION['historico'] as $message) {
+                            $role = $message['role'];
+                            $content = htmlspecialchars_decode($message['content'], ENT_QUOTES);
 
-                        if ($role == "user") {
-                            echo "<div class='message1 user type-2'>";
-                            echo $content;
-                            echo "</div>";
-                        } elseif ($role == "assistant") {
-                            echo "<div class='message1 ia type-2'>";
-                            echo $content;
-                            echo "</div>";
+                            if ($role == "user") {
+                                echo "<div class='message1 user type-2'>";
+                                echo $content;
+                                echo "</div>";
+                            } elseif ($role == "assistant") {
+                                echo "<div class='message1 ia type-2'>";
+                                echo $content;
+                                echo "</div>";
+                            }
                         }
+                        //Se a contagem for menor que 3
+                    } else {
+                        echo '<p class="ia-default type-2">Tire suas duvidas aqui!</p>';
                     }
+                    //Se $_SESSION nao estiver definido
                 } else {
                     echo '<p class="ia-default type-2">Tire suas duvidas aqui!</p>';
                 }
@@ -74,13 +81,16 @@
             </div>
             <div id="loadingSpinner"></div>
             <form method="POST" id="form"
-                action="set.php?titulo=<?php if (isset($_GET['titulo'])) {
+                action="./ia/set.php?titulo=<?php if (isset($_GET['titulo'])) {
                     echo $_GET['titulo'];
                 } ?>">
                 <div class="input-wrapper">
                     <input type="text" name="valor" id="valor" placeholder="Digite sua questão..." required
                         class="type-1">
-                    <button type="submit">➤</button>
+                    <button class="btn-2"><a href="./ia/change.php?titulo=<?php if (isset($_GET['titulo'])) {
+                        echo $_GET['titulo'];
+                    } ?>" class="link">↻</a></button>
+                    <button type="submit" class="btn-1">➤</button>
                 </div>
             </form>
         </div>

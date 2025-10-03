@@ -43,7 +43,7 @@
             $pdfPath = $dir . $pdfFile;
             echo "<div class='swiper-slide'>
                   <h2 class='type-2'>" . $nomeSemExtensao . "</h2>
-                  <iframe src='" . $pdfPath . "'></iframe>
+                  <iframe src='$pdfPath#toolbar=0'></iframe>
                   <a href='" . $pdfPath . "' class='type-2' download>⬇ Baixar PDF</a>
                 </div>";
 

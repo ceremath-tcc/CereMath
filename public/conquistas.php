@@ -17,12 +17,12 @@
 
     <!-- Conteúdo -->
     <div class="content">
-        <h1>🏆 Suas Conquistas:</h1>
+        <h1 class="type-2">🏆 Suas Conquistas:</h1>
 
         <div class="filters">
-            <a href="" id="1-bt" class="active">📋 Todos</a>
-            <a href="#concluido" id="2-bt">✅ Concluídas</a>
-            <a href="#incompleto" id="3-bt">❌ Não Concluídas</a>
+            <a href="" id="1-bt" class="active type-1">📋 Todos</a>
+            <a href="#concluido" id="2-bt" class="type-1">✅ Concluídas</a>
+            <a href="#incompleto" id="3-bt" class="type-1">❌ Não Concluídas</a>
         </div>
 
         <?php

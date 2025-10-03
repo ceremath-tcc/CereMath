@@ -72,7 +72,7 @@
       <div class="divider"></div>
       <div class="actions">
         <a class="btn-conta btn-roxo type-2" href="conquistas.php">🏆 Minhas Conquistas</a>
-        <a class="btn-conta btn-sair type-2" href="logout.php">🔒 Sair da Conta</a>
+        <a class="btn-conta btn-sair type-2" href="./account/logout.php">🔒 Sair da Conta</a>
       </div>
     </div>
     <br>
