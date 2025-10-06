@@ -37,15 +37,16 @@
             }
             ?>
             <br>
-            <button class="btn-passar type-2"><a href="teste.php" class="link space">Ir para o questionario.</a></button>
+            <button class="btn-passar type-2"><a href="quiz.php?materia=<?php if (isset($_GET['titulo'])) {
+                echo $_GET['titulo'];
+            } ?>" class="link space">Ir para o questionario.</a></button>
         </div>
 
         <!--Aqui fica a IA-->
         <div class="study-box" id="chat-box">
-            <button class="button-remove type-2" id="remove"><a
-                    href="./components/removehistory.php?titulo=<?php if (isset($_GET['titulo'])) {
-                        echo $_GET['titulo'];
-                    } ?>">Reinicie
+            <button class="button-remove type-2" id="remove"><a href="./components/removehistory.php?titulo=<?php if (isset($_GET['titulo'])) {
+                echo $_GET['titulo'];
+            } ?>">Reinicie
                     sua conversa</a></button>
             <div class="container-ia" id="ia-box">
                 <!--Responsavel por carregar as respostas da IA-->
@@ -53,7 +54,7 @@
                 // Se não existir histórico, não mostra nada
                 if (isset($_SESSION['historico'])) {
                     //Se só tiver uma questao sem resposta nao envia
-                    if(count($_SESSION['historico']) > 2){
+                    if (count($_SESSION['historico']) > 2) {
                         //Define o tamanho do historico
                         foreach ($_SESSION['historico'] as $message) {
                             $role = $message['role'];
@@ -80,10 +81,9 @@
                 ?>
             </div>
             <div id="loadingSpinner"></div>
-            <form method="POST" id="form"
-                action="./ia/set.php?titulo=<?php if (isset($_GET['titulo'])) {
-                    echo $_GET['titulo'];
-                } ?>">
+            <form method="POST" id="form" action="./ia/set.php?titulo=<?php if (isset($_GET['titulo'])) {
+                echo $_GET['titulo'];
+            } ?>">
                 <div class="input-wrapper">
                     <input type="text" name="valor" id="valor" placeholder="Digite sua questão..." required
                         class="type-1">
