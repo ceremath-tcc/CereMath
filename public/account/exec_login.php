@@ -54,9 +54,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
     //Final E-mail
 
-
+    unset($controller);
     header('Location: /../public/home.php');
 } else {
+    unset($controller);
     header('Location: /../public/login.php?error=error');
 }
 

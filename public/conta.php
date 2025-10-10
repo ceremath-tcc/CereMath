@@ -15,7 +15,7 @@
   require_once("./account/contaManager.php ");
   //Agora vai guardar o progresso do usuario dentro da array $progresso
   $progresso = $controllerC->showProgressao($_SESSION['id']);
-
+  unset($controllerC);
   $labels = array_column($progresso, 'materia');
   $acertos = array_column($progresso, 'total_acertos');
   $erros = array_column($progresso, 'total_erros');

@@ -15,3 +15,5 @@ if ($check != $_SESSION['id']) {
     unset($_SESSION['email']);
     header('Location: home.php');
 }
+
+unset($controllerU);

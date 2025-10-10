@@ -43,3 +43,5 @@ for ($i = 0; $i < count($conceitos); $i++) {
     }
   }
 }
+
+unset($controller);
