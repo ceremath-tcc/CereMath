@@ -1,10 +1,28 @@
+const perguntas = [];
 
-const perguntas = [
-  { enunciado: "Quanto é 5 + 3?", alternativas: ["6", "7", "8", "9"], correta: 2 },
-  { enunciado: "Quanto é 10 - 4?", alternativas: ["5", "6", "7", "8"], correta: 1 },
-  { enunciado: "Quanto é 7 x 2?", alternativas: ["12", "14", "16", "18"], correta: 1 },
-  { enunciado: "Quanto é 20 ÷ 5?", alternativas: ["2", "3", "4", "5"], correta: 2 }
-];
+// Exemplo em arquivo script.js
+fetch('components/load-questoes.php?qtd=5')  // ou o caminho correto do seu PHP
+  .then(response => response.json())
+  .then(data => {
+    //Para todas as questoes ele vai inserir na array perguntas
+    data.forEach((q) => {
+
+      //Da um push desse jeito, (eles permanecem na posição 1 por conveniencia)
+      perguntas.push({
+        enunciado: q.enunciado_gerado,
+        alternativas: [q.alternativas.alt_c, q.alternativas.alt_2],
+        correta: 0
+      });
+
+    });
+
+    embaralhar(perguntas);
+    carregarPergunta();
+
+  })
+  .catch(error => console.error(error));
+
+
 
 // Função para embaralhar um array (Fisher-Yates)
 function embaralhar(array) {
@@ -13,9 +31,6 @@ function embaralhar(array) {
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
-
-// Embaralhar as perguntas ao iniciar
-embaralhar(perguntas);
 
 let respostas = document.querySelectorAll(".resposta");
 let checarBtn = document.getElementById("checar");
@@ -30,23 +45,36 @@ let perguntaAtual = 0;
 
 function carregarPergunta() {
   let q = perguntas[perguntaAtual];
+
   document.getElementById("pergunta").textContent = q.enunciado;
 
-  // Embaralhar alternativas
-  let alternativasEmbaralhadas = [...q.alternativas];
-  embaralhar(alternativasEmbaralhadas);
+  const respostasDivs = document.querySelectorAll(".resposta");
+
+  // Primeiro, esconder todas as divs
+  respostasDivs.forEach(div => {
+    div.style.display = "none";
+  });
+
+  // Pegar só as alternativas da questão
+  let alternativas = [...q.alternativas];
+
+  // Embaralhar essas alternativas
+  embaralhar(alternativas);
+
+  // Mostrar apenas as divs necessárias e preencher o texto
+  alternativas.forEach((alt, i) => {
+    if (respostasDivs[i]) {
+      respostasDivs[i].textContent = alt;
+      respostasDivs[i].style.display = "flex";
+      respostasDivs[i].classList.remove("selecionada");
+    }
+  });
 
   // Salvar a resposta correta original (texto)
   let respostaCorretaTexto = q.alternativas[q.correta];
-
-  respostas.forEach((r, i) => {
-    r.textContent = alternativasEmbaralhadas[i];
-    r.classList.remove("selecionada");
-  });
-
-  // Salvar resposta correta atual para checagem depois
   checarBtn.dataset.respostaCorreta = respostaCorretaTexto;
 
+  // Reset
   respostaSelecionada = null;
   caixaFeedback.style.display = "none";
   proximoBtn.style.display = "none";
@@ -54,6 +82,7 @@ function carregarPergunta() {
   checarBtn.disabled = false;
   atualizarProgresso();
 }
+
 
 function atualizarProgresso() {
   let progresso = (perguntaAtual / perguntas.length) * 100;
@@ -124,5 +153,3 @@ finalBtn.addEventListener("click", () => {
   // Altere para o caminho da sua página principal
   window.location.href = "home.php";
 });
-
-carregarPergunta();
