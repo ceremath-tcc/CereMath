@@ -25,9 +25,11 @@
 
   foreach ($progresso as $row) {
     if ($row['total_acertos'] > 0 || $row['total_erros'] > 0) {
+      $total = $row['total_acertos'] + $row['total_erros'];
+      
       $labelsFiltrados[] = $row['materia'];
-      $acertosFiltrados[] = $row['total_acertos'];
-      $errosFiltrados[] = $row['total_erros'];
+      $acertosFiltrados[] = ($row['total_acertos'] / $total) * 100;
+      $errosFiltrados[] = ($row['total_erros'] / $total) * 100;
     }
   }
 
