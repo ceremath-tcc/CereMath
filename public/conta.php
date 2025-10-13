@@ -12,7 +12,7 @@
 
 <body>
   <?php include 'components/header.php';
-  require_once("./account/contaManager.php ");
+  require_once "./account/contaManager.php";
   //Agora vai guardar o progresso do usuario dentro da array $progresso
   $progresso = $controllerC->showProgressao($_SESSION['id']);
   unset($controllerC);
@@ -40,26 +40,28 @@
       <h2 class="type-2">Confirme sua identidade</h2>
       <button class="exit" id="exit">X</button>
     </div>
+    <br>
+    <div class="divider"></div><br>
+    <form action="" method="POST">
+      <br><br>
+      <label for="password" class="type-1">Digite sua senha</label>
+      <input type="password" id="password" name="password" placeholder="Senha..."><br><br><br><br>
       <br>
       <div class="divider"></div><br>
-      <form action="" method="POST">
-        <br><br>
-        <label for="password" class="type-1">Digite sua senha</label>
-        <input type="password" id="password" name="password" placeholder="Senha..."><br><br><br><br>
-        <br>
-        <div class="divider"></div><br>
-        <input type="submit" value="Verificar">
-      </form>
+      <input type="submit" value="Verificar">
+    </form>
   </div>
 
   <div class="container-conta">
-  
+
     <div class="card">
       <div class="title type-2"><span class="emoji">🧑‍💼</span> Informações da conta:</div>
       <a class="sub type-2" id="mudar">-- Desejo mudar minhas informações</a>
       <br><br>
       <div class="row">
-        <div class="tag type-1" id="user">#<?php echo $_SESSION['id']; ?> - Usuario, <?php echo $_SESSION['username']; ?></div>
+        <div class="tag type-1" id="user">#<?php echo $_SESSION['id']; ?> - Usuario,
+          <?php echo $_SESSION['username']; ?>
+        </div>
         <div class="tag type-1" id="email">
           <?php if (isset($_SESSION['email'])) {
             echo "E-mail: " . $_SESSION['email'];
@@ -97,7 +99,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./js/conta.js"></script>
   <script>
-    
+
     const labels = <?= json_encode($labelsFiltrados, JSON_UNESCAPED_UNICODE) ?>;
     const acertos = <?= json_encode($acertosFiltrados) ?>;
     const erros = <?= json_encode($errosFiltrados) ?>;
@@ -139,8 +141,12 @@
             x: { grid: { display: false } },
             y: {
               beginAtZero: true,
-              max: 100,
-              ticks: { stepSize: 20 },
+              ticks: {
+                stepSize: 20, // cada 20% por exemplo
+                callback: function (value) {
+                  return value + '%'; // adiciona o símbolo de %
+                }
+              },
               grid: { color: 'rgba(0,0,0,.06)' }
             }
           }

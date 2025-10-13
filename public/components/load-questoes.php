@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../src/controller/questaoController.php';
+require __DIR__ . '/../../src/controller/questaoController.php';
 $controller = new QuestaoController();
 
 $id_materia = isset($_GET['materia']) ? intval($_GET['materia']) : 1;

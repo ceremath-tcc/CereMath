@@ -174,4 +174,5 @@ finalBtn.addEventListener("click", () => {
     })
   })
   .catch(err => console.error('Erro ao atualizar progresso:', err));
+  window.location.href = 'home.php';
 });

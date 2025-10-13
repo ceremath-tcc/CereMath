@@ -18,7 +18,7 @@ for ($i = 0; $i < count($conceitos); $i++) {
                 <div class='line'></div>
                 <ul>
                     <li class='type-1 ";
-                    if($conceitos[0]["concluido"] == 0){echo "emAndamento'><a class='emAndamento' href='ia.php?titulo=" . $i+1 . "' >" . $conceitos[0]["nome"] . "</a>"; } else { echo "feito'>" . $conceitos[0]["nome"]; };
+                    if($conceitos[0]["concluido"] == 0){echo "emAndamento'><a class='emAndamento' href='ia.php?titulo=" . $i+1 . "' >" . $conceitos[0]["nome"] . "</a>"; } else { echo "feito'><a class='feito' href='ia.php?titulo=" . $i+1 . "' >" . $conceitos[$i]["nome"] . "</a>"; };
                     echo  "</li>";
                     $contProgresso +=1;
   } else {
@@ -33,12 +33,12 @@ for ($i = 0; $i < count($conceitos); $i++) {
                 <div class='line'></div>
                 <ul>
                     <li class='type-1 "; 
-                    if($conceitos[$i]["concluido"] == 0){echo "emAndamento'><a class='emAndamento' href='teste.php?titulo=" . $i+1 . "' >" . $conceitos[$i]["nome"] . "</a>"; } else { echo "feito'>" . $conceitos[$i]["nome"]; };
+                    if($conceitos[$i]["concluido"] == 0){echo "emAndamento'><a class='emAndamento' href='teste.php?titulo=" . $i+1 . "' >" . $conceitos[$i]["nome"] . "</a>"; } else { echo "feito'><a class='feito' href='ia.php?titulo=" . $i+1 . "' >" . $conceitos[$i]["nome"] . "</a>"; };
                     echo  "</li>";
                     $contProgresso +=1 ;
     } else {
       echo "<li class='type-1 ";
-      if($conceitos[$i]["concluido"] == 1){echo "emAndamento'><a class='emAndamento' href='teste.php?titulo=" . $i+1 . "' >" . $conceitos[$i]["nome"] . "</a>"; } elseif($conceitos[$i]["concluido"] == 0) { echo "naoFeito'>" . $conceitos[$i]["nome"];} else { echo "feito'>" . $conceitos[$i]["nome"]; };
+      if($conceitos[$i]["concluido"] == 1){echo "emAndamento'><a class='emAndamento' href='teste.php?titulo=" . $i+1 . "' >" . $conceitos[$i]["nome"] . "</a>"; } elseif($conceitos[$i]["concluido"] == 0) { echo "naoFeito'>" . $conceitos[$i]["nome"];} else { echo "feito'><a class='feito' href='ia.php?titulo=" . $i+1 . "' >" . $conceitos[$i]["nome"] . "</a>"; };
       echo "</li>";
     }
   }

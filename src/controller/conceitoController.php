@@ -103,8 +103,8 @@ class ConceitoController
         $stmt = $db->prepare("
             UPDATE user_Conceito
             SET 
-                acertos = :acertos,
-                erros = :erros,
+                acertos = acertos + :acertos,
+                erros = erros + :erros,
                 concluido = 2,
                 atualizado_em = CURRENT_TIMESTAMP
             WHERE id_user = :id_user
@@ -118,7 +118,7 @@ class ConceitoController
             ':id_conceito' => $idConceito
         ]);
 
-        
+
         // 2️⃣ Atualiza o próximo conceito como "em andamento" (1)
         $stmt2 = $db->prepare("
             UPDATE user_Conceito
