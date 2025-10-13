@@ -94,4 +94,43 @@ class ConceitoController
 
         return $progresso;
     }
+
+    //Responsavel por passar de materia
+    public function setConceito($idUser, $idConceito, $acertos, $erros){
+        $db = Connection::getConnection();
+
+        // Atualiza o conceito atual como concluído e registra acertos/erros
+        $stmt = $db->prepare("
+            UPDATE user_Conceito
+            SET 
+                acertos = :acertos,
+                erros = :erros,
+                concluido = 2,
+                atualizado_em = CURRENT_TIMESTAMP
+            WHERE id_user = :id_user
+              AND id_conceito = :id_conceito
+        ");
+
+        $stmt->execute([
+            ':acertos' => $acertos,
+            ':erros' => $erros,
+            ':id_user' => $idUser,
+            ':id_conceito' => $idConceito
+        ]);
+
+        
+        // 2️⃣ Atualiza o próximo conceito como "em andamento" (1)
+        $stmt2 = $db->prepare("
+            UPDATE user_Conceito
+            SET concluido = 1,
+                atualizado_em = CURRENT_TIMESTAMP
+            WHERE id_user = :id_user
+              AND id_conceito = :proximo
+        ");
+
+        $stmt2->execute([
+            ':id_user' => $idUser,
+            ':proximo' => $idConceito + 1
+        ]);
+    }
 }

@@ -1,8 +1,8 @@
 <?php
-require __DIR__ . '/../../src/controller/questaoController.php';
+require __DIR__ . '/../src/controller/questaoController.php';
 $controller = new QuestaoController();
 
-$id_materia = isset($_GET['id_materia']) ? intval($_GET['id_materia']) : 1;
+$id_materia = isset($_GET['materia']) ? intval($_GET['materia']) : 1;
 $qtd = isset($_GET['qtd']) ? intval($_GET['qtd']) : 5; // quantidade de questões
 $controller = new QuestaoController();
 

@@ -1,7 +1,19 @@
 const perguntas = [];
 
+
+//Pega o id da materia
+const params = new URLSearchParams(window.location.search);
+
+// Acessa os parâmetros
+const qtd = params.get('materia');               // "5" (string)
+
+// Guarda aqui
+const qtdNum = parseInt(qtd, 10);
+
+
+
 // Exemplo em arquivo script.js
-fetch('components/load-questoes.php?qtd=5')  // ou o caminho correto do seu PHP
+fetch(`components/load-questoes.php?qtd=5&materia=${qtdNum}`)  // ou o caminho correto do seu PHP
   .then(response => response.json())
   .then(data => {
     //Para todas as questoes ele vai inserir na array perguntas
@@ -21,6 +33,7 @@ fetch('components/load-questoes.php?qtd=5')  // ou o caminho correto do seu PHP
 
   })
   .catch(error => console.error(error));
+
 
 
 
@@ -150,6 +163,15 @@ proximoBtn.addEventListener("click", () => {
 });
 
 finalBtn.addEventListener("click", () => {
-  // Altere para o caminho da sua página principal
-  window.location.href = "home.php";
+  // Da um fetch em conclude.php
+  fetch('conclude.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      id_conceito: qtdNum,
+      acertos: pontos/10,
+      erros: (50 - pontos)/10
+    })
+  })
+  .catch(err => console.error('Erro ao atualizar progresso:', err));
 });
