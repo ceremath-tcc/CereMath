@@ -1,7 +1,5 @@
-    create database Ceremath;
-    
+create database Ceremath;
     use Ceremath;
-    
     /*USUARIO*/
     CREATE TABLE Users (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -9,14 +7,12 @@
         username VARCHAR(255) NOT NULL,
         password VARCHAR(255) NOT NULL
     );
-    
     -- MATERIAS
     Create table Conceito(
         id INT PRIMARY KEY auto_increment,  -- ID da Materia
         nome VARCHAR(255) NOT NULL,           -- Nome da Materia
         materia varchar(255) NOT NULL
     );
-    
     Create table user_Conceito( 
 		id_user int not null, 
 		id_conceito int not null, 
@@ -28,7 +24,6 @@
 		foreign key(id_user) references users(id), 
 		foreign key(id_conceito) references Conceito(id) 
     );
-    
     -- Conquistas
     Create table Conquista(
         id INT PRIMARY KEY auto_increment,
@@ -36,8 +31,7 @@
         descricao NVARCHAR(500),
         raridade NVARCHAR(500)
     );
-    
-    
+
     Create table user_Conquista(
         id_user int not null,
         id_conquista int not null,	
@@ -47,8 +41,7 @@
         foreign key(id_user) references users(id),
         foreign key(id_conquista) references Conquista(id)
     );
-    
-    
+
     -- Tabela principal com a pergunta base e placeholders
     CREATE TABLE perguntas (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -63,15 +56,16 @@
         valores JSON NOT NULL,     -- Exemplo: '{"v1": 1, "v2": 1}'
         FOREIGN KEY (pergunta_id) REFERENCES perguntas(id) ON DELETE CASCADE
     );
-    
     -- Tabela opcional para armazenar alternativas geradas (ex: se quiser salvar)
     CREATE TABLE alternativas (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        pergunta_id INT NOT NULL,
+		pergunta_id INT NOT NULL,
+        variaveis_id INT NOT NULL,
         opcoes JSON NOT NULL, -- Ex: '{"op_c": 0, "op_2": 1, "op_3": 2, "op_4": 3}' - op_c é a correta!
+        FOREIGN KEY (variaveis_id) REFERENCES variaveis(id) ON DELETE CASCADE,
         FOREIGN KEY (pergunta_id) REFERENCES perguntas(id) ON DELETE CASCADE
     );
-    
+
 INSERT INTO Conquista (nome, descricao, raridade) VALUES
 ('Bem vindo', 'Conquistada por fazer a primeira conta', 'Comum'),
 ('Primeiros Passos', 'Concluiu a primeira lição', 'Comum'),
@@ -96,7 +90,7 @@ INSERT INTO Conquista (nome, descricao, raridade) VALUES
 ('Log Iniciante', 'Concluiu a lição de logaritmos', 'Comum'),
 ('Perfil completo', 'Preencheu tudo sobre seu perfil', 'Comum'),
 ('Primeiro Histórico', 'Viu o histórico pelo menos uma vez das lições concluídas', 'Comum');
-
+ 
     
     insert into Conceito(nome, materia) values
     ("Elemento — Pertinência", "Conjuntos"),
@@ -141,25 +135,41 @@ INSERT INTO Conquista (nome, descricao, raridade) VALUES
     ("Fórmula do termo geral", "Progressão Geométrica"),
     ("Soma dos termos finita e infinita", "Progressão Geométrica"),
     ("Limite de sequência", "Progressão Geométrica");
+    -- INSERINDO A PERGUNTA BASE
+	INSERT INTO perguntas (materia_id, texto)
+	VALUES (1, 'Dado o conjunto A = {v1}, o elemento v2 pertence a A?');
     
-    -- Perguntas -- Funcionando
-    insert into perguntas(materia_id, texto) values
-    (1, "Sample01. v1, v2.");
+    select * from user_Conceito;
+ 
+	-- Vamos supor que o ID gerado acima foi 1 (use LAST_INSERT_ID() se quiser automatizar)
+	SET @pergunta_id = LAST_INSERT_ID();
+ 
+	-- INSERINDO AS 10 VARIAÇÕES DA QUESTÃO
+	INSERT INTO variaveis (pergunta_id, valores) VALUES
+	(@pergunta_id, '{"v1": "1,2,3,4,5", "v2": 3}'),
+	(@pergunta_id, '{"v1": "2,4,6,8", "v2": 5}'),
+	(@pergunta_id, '{"v1": "0,1,2,3", "v2": 0}'),
+	(@pergunta_id, '{"v1": "5,10,15", "v2": 20}'),
+	(@pergunta_id, '{"v1": "a,b,c,d", "v2": "b"}'),
+	(@pergunta_id, '{"v1": "a,e,i,o,u", "v2": "x"}'),
+	(@pergunta_id, '{"v1": "10,20,30,40", "v2": 10}'),
+	(@pergunta_id, '{"v1": "1 ,3 , 5, 7, 9", "v2": 4}'),
+	(@pergunta_id, '{"v1": "brasil,argentina, chile", "v2": "peru"}'),
+	(@pergunta_id, '{"v1": "azul,verde,vermelho", "v2": "verde"}');
+ 
+	-- Agora pegamos os IDs das variáveis para vincular as alternativas
+	-- (em produção você pode obter via SELECT ou via código backend)
+	-- Aqui vou assumir que elas foram inseridas com IDs de 1 a 10, respectivamente.
+ 
+	INSERT INTO alternativas (variaveis_id, pergunta_id, opcoes) VALUES
+	(1, @pergunta_id, '{"alt_c":"Sim","alt_2":"Não"}'),
+	(2, @pergunta_id, '{"alt_c":"Não","alt_2":"Sim"}'),
+	(3, @pergunta_id, '{"alt_c":"Sim","alt_2":"Não"}'),
+	(4, @pergunta_id, '{"alt_c":"Não","alt_2":"Sim"}'),
+	(5, @pergunta_id, '{"alt_c":"Sim","alt_2":"Não"}'),
+	(6, @pergunta_id, '{"alt_c":"Não","alt_2":"Sim"}'),
+	(7, @pergunta_id, '{"alt_c":"Sim","alt_2":"Não"}'),
+	(8, @pergunta_id, '{"alt_c":"Não","alt_2":"Sim"}'),
+	(9, @pergunta_id, '{"alt_c":"Não","alt_2":"Sim"}'),
+	(10, @pergunta_id, '{"alt_c":"Sim","alt_2":"Não"}');
     
-    select * from perguntas;
-    
-    
-    -- Variaveis -- Funcionando
-    insert into variaveis(pergunta_id, valores) values
-    (4, '{"v1": 1, "v2": 1}');
-    
-    select pergunta_id, JSON_EXTRACT(valores, '$.v1') as valor1, JSON_EXTRACT(valores, '$.v2') as valor2 from variaveis where pergunta_id = 4 and id = 1;
-    
-    
-    -- Alternaticas -- Funcionando
-    insert into alternativas(pergunta_id, opcoes) values
-    (4, '{"op_c": 0, "op_2": 1, "op_3": 2, "op_4": 3}');
-    
-    select pergunta_id, JSON_EXTRACT(opcoes, '$.op_c') as opcao_correta, JSON_EXTRACT(opcoes, '$.op_2') as opcao_1, JSON_EXTRACT(opcoes, '$.op_3') as opcao_2, JSON_EXTRACT(opcoes, '$.op_4') as opcao_3 from alternativas where pergunta_id = 4;
-    
-    SELECT * FROM user_Conceito where id_user=1;
