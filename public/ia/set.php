@@ -83,6 +83,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "content" => $resposta_final
         ];
     }
+    //Adiciona a nova conquista:
+    $data = http_build_query(['trigger_key' => 'CHAT_IA_PRIMEIRA_VEZ']);
+    $options = [
+        'http' => [
+            'method' => 'POST',
+            'header' => 'Content-type: application/x-www-form-urlencoded',
+            'content' => $data
+        ]
+    ];
+    $context = stream_context_create($options);
+    $result = file_get_contents('https://seusite.com/ativar_trigger.php', false, $context);
+    
 
     // Redireciona para a mesma página com o parâmetro 'titulo'
     $titulo = $_GET['titulo'] ?? '';
