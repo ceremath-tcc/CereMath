@@ -53,7 +53,7 @@ class ConquistaController
 }
 
 
-
+    //Adiciona o progresso padrão doas conquistas (Tudo como indefinida exceto a de criar uma conta)
     public function addProgressao($id)
     {
         $db = Connection::getConnection();
@@ -68,5 +68,28 @@ class ConquistaController
             $stmt->execute([$id]);
         }
 
+    }
+
+
+    //Responsavel por mudar o status de uma conquista
+    public function ativarTrigger($usuario_id, $trigger_key) {
+        // Verifica se a trigger está associada a alguma conquista
+        $stmt = $this->conn->prepare("SELECT id FROM Conquista WHERE trigger_key = ?");
+        $stmt->execute([$trigger_key]);
+        $conquista = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$conquista) return false;
+
+        // Verifica se o usuário já possui essa conquista
+        $stmt = $this->conn->prepare("SELECT * FROM user_Conquista WHERE id_user = ? AND id_conquista = ?");
+        $stmt->execute([$usuario_id, $conquista['id']]);
+        if ($stmt->rowCount() > 0) return false; // já tem
+
+        // Se não tiver, insere
+        $stmt = $this->conn->prepare("INSERT INTO user_Conquista (id_user, id_conquista, atualizado_em) VALUES (?, ?, NOW())");
+        $stmt->execute([$usuario_id, $conquista['id']]);
+
+        // Opcional: retornar alguma mensagem para mostrar na tela
+        return true;
     }
 }

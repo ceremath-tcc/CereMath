@@ -133,4 +133,5 @@ class ConceitoController
             ':proximo' => $idConceito + 1
         ]);
     }
+    
 }
