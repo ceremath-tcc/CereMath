@@ -15,7 +15,8 @@
 
   <?php require_once './components/header.php';
   require_once 'components/footer.php';
-  require_once 'components/fonts.php'; ?>
+  require_once 'components/fonts.php';
+  require './components/conquista-check.php' ?>
 
   <div class="main-mat">
     <h1 class="type-2">📚 Materiais de Estudo</h1>

@@ -35,10 +35,10 @@ class ConquistaController
 
 
     public function showConquista()
-{
-    $db = Connection::getConnection();
+    {
+        $db = Connection::getConnection();
 
-    $stmt = $db->prepare(" 
+        $stmt = $db->prepare(" 
         SELECT 
             id AS id_conquista,
             nome AS nome_conquista,
@@ -47,10 +47,10 @@ class ConquistaController
         FROM Conquista
     ");
 
-    $stmt->execute(); // ← FALTAVA ISSO!
+        $stmt->execute(); // ← FALTAVA ISSO!
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 
     //Adiciona o progresso padrão doas conquistas (Tudo como indefinida exceto a de criar uma conta)
@@ -60,7 +60,7 @@ class ConquistaController
 
         // Verifica se já existe
         for ($i = 1; $i < 22; $i++) {
-            if($i == 1){
+            if ($i == 1) {
                 $stmt = $db->prepare("INSERT INTO user_Conquista (id_user, id_conquista, concluido) VALUES (?, $i, 1);");
             } else {
                 $stmt = $db->prepare("INSERT INTO user_Conquista (id_user, id_conquista) VALUES (?, $i);");
@@ -72,24 +72,33 @@ class ConquistaController
 
 
     //Responsavel por mudar o status de uma conquista
-    public function ativarTrigger($usuario_id, $trigger_key) {
+    public function ativarTrigger($usuario_id, $trigger_key)
+    {
         $db = Connection::getConnection();
 
         // Verifica se a trigger está associada a alguma conquista
-        $stmt = $this->$db->prepare("SELECT id FROM Conquista WHERE trigger_key = ?");
+        $stmt = $db->prepare("SELECT id FROM Conquista WHERE trigger_key = ?");
         $stmt->execute([$trigger_key]);
         $conquista = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!$conquista) return false;
+        if (!$conquista)
+            return 0;
 
         // Verifica se o usuário já possui essa conquista
-        $stmt = $this->$db->prepare("SELECT * FROM user_Conquista WHERE id_user = ? AND id_conquista = ?");
+        $stmt = $db->prepare("SELECT * FROM user_Conquista WHERE id_user = ? AND id_conquista = ? AND concluido = 1");
         $stmt->execute([$usuario_id, $conquista['id']]);
-        if ($stmt->rowCount() > 0) return false; // já tem
+        if ($stmt->rowCount() > 0)
+            return 1; // já tem
 
         // Se não tiver, insere
-        $stmt = $this->$db->prepare("INSERT INTO user_Conquista (id_user, id_conquista, atualizado_em) VALUES (?, ?, NOW())");
+        $stmt = $db->prepare("
+            UPDATE user_Conquista 
+            SET atualizado_em = NOW(),
+            concluido = 1 
+            WHERE id_user = ? AND id_conquista = ?
+        ");
         $stmt->execute([$usuario_id, $conquista['id']]);
+
 
         // Opcional: retornar alguma mensagem para mostrar na tela
         return true;

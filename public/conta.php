@@ -13,6 +13,7 @@
 <body>
   <?php include 'components/header.php';
   require_once "./account/contaManager.php";
+  require './components/conquista-check.php';
   //Agora vai guardar o progresso do usuario dentro da array $progresso
   $progresso = $controllerC->showProgressao($_SESSION['id']);
   unset($controllerC);

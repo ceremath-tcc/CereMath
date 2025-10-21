@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<?php require_once './components/header.php'; require_once './components/footer.php'; require_once './components/fonts.php'; require_once './components/frase.php'; ?>
+<?php require_once './components/header.php'; require_once './components/footer.php'; require_once './components/fonts.php'; require_once './components/frase.php'; require './components/conquista-check.php' ?>
   
   <div class="container-home">
     <h1 class="h1-home type-2 ">Seja bem-vindo novamente, <span style="color:#000;"><?php if(isset($_SESSION['username'])){ echo $_SESSION['username'];} else { echo "Visitante"; } ?>.</php></span></h1><br>

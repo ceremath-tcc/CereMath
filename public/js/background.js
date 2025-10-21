@@ -60,7 +60,7 @@ function startAnimation() {
     const elapsedTime = Date.now() - startTime;
 
     // enquanto não se passaram 2 segundos, continua a animação
-    if (elapsedTime < 500) {
+    if (elapsedTime < 1000) {
       draw(); // desenha a animação
       requestAnimationFrame(animate); // continua chamando a animação
     } else {

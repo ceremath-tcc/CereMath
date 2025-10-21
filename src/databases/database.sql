@@ -66,30 +66,31 @@ create database Ceremath;
         FOREIGN KEY (pergunta_id) REFERENCES perguntas(id) ON DELETE CASCADE
     );
 
-INSERT INTO Conquista (nome, descricao, raridade) VALUES
-('Bem vindo', 'Conquistada por fazer a primeira conta', 'Comum'),
-('Primeiros Passos', 'Concluiu a primeira lição', 'Comum'),
-('Explorador', 'Acessou 5 conteúdos diferentes', 'Comum'),
-('Curioso(a)', 'Fez a primeira pergunta para a IA', 'Comum'),
-('Navegador(a)', 'Visitou tudo do site', 'Comum'),
-('Foco Total', 'Concluiu 3 lições sem pular nada', 'Rara'),
-('Ritmo de Estudos', 'Estudou todos os dias durante uma semana', 'Rara'),
-('Águia', 'Concluiu uma lição sem pedir ajuda à IA', 'Rara'),
-('Geômetra', 'Concluiu todo conteúdo de geometria', 'Épica'),
-('Funções', 'Concluiu todas as lições de funções', 'Épica'),
-('Estatístico(a)', 'Finalizou todo conteúdo de estatística e probabilidade', 'Épica'),
-('Persistente', 'Repetiu uma lição até acertar todas as respostas', 'Rara'),
-('Desafiante', 'Tentou resolver uma lição mais difícil antes do recomendado', 'Rara'),
-('Nunca desista', 'Tentou mais de duas vezes fazer a lição depois de não passar', 'Rara'),
-('Memória de elefante', 'Concluiu uma lição que já havia visto novamente', 'Rara'),
-('Colecionador(a)', 'Obteve todas as conquistas de uma categoria', 'Lendária'),
-('Primeiro Conjunto', 'Concluiu a lição de conjuntos', 'Comum'),
-('União e Interseção', 'Resolveu dois exercícios com um desses dois', 'Comum'),
-('Parábola básica', 'Concluiu a lição de função quadrática', 'Comum'),
-('Linear Iniciante', 'Concluiu a lição de função afim', 'Comum'),
-('Log Iniciante', 'Concluiu a lição de logaritmos', 'Comum'),
-('Perfil completo', 'Preencheu tudo sobre seu perfil', 'Comum'),
-('Primeiro Histórico', 'Viu o histórico pelo menos uma vez das lições concluídas', 'Comum');
+    INSERT INTO Conquista (nome, descricao, raridade, trigger_key) VALUES
+    ('Bem vindo', 'Conquistada por fazer a primeira conta', 'Comum', 'CRIAR_CONTA'),
+    ('Primeiros Passos', 'Concluiu a primeira lição', 'Comum', 'PRIMEIRA_LICAO'),
+    ('Explorador', 'Acessou 5 conteúdos diferentes', 'Comum', 'VISITAS_5_CONTEUDOS'),
+    ('Curioso(a)', 'Fez a primeira pergunta para a IA', 'Comum', 'CHAT_IA_PRIMEIRA_VEZ'),
+    ('Navegador(a)', 'Visitou tudo do site', 'Comum', 'VISITOU_TUDO'),
+    ('Foco Total', 'Concluiu 3 lições sem pular nada', 'Rara', 'LICOES_SEM_PULAR'),
+    ('Ritmo de Estudos', 'Estudou todos os dias durante uma semana', 'Rara', 'ESTUDOS_7_DIAS'),
+    ('Águia', 'Concluiu uma lição sem pedir ajuda à IA', 'Rara', 'SEM_AJUDA_IA'),
+    ('Geômetra', 'Concluiu todo conteúdo de geometria', 'Épica', 'CONCLUIU_GEOMETRIA'),
+    ('Funções', 'Concluiu todas as lições de funções', 'Épica', 'CONCLUIU_FUNCOES'),
+    ('Estatístico(a)', 'Finalizou todo conteúdo de estatística e probabilidade', 'Épica', 'CONCLUIU_ESTATISTICA'),
+    ('Persistente', 'Repetiu uma lição até acertar todas as respostas', 'Rara', 'REPETIU_ATE_ACERTAR'),
+    ('Desafiante', 'Tentou resolver uma lição mais difícil antes do recomendado', 'Rara', 'LICAO_ANTES_TEMPO'),
+    ('Nunca desista', 'Tentou mais de duas vezes fazer a lição depois de não passar', 'Rara', 'TENTOU_VARIAS_VEZES'),
+    ('Memória de elefante', 'Concluiu uma lição que já havia visto novamente', 'Rara', 'LICAO_REFEITA'),
+    ('Colecionador(a)', 'Obteve todas as conquistas de uma categoria', 'Lendária', 'CONQUISTAS_COMPLETAS_CATEGORIA'),
+    ('Primeiro Conjunto', 'Concluiu a lição de conjuntos', 'Comum', 'LICAO_CONJUNTOS'),
+    ('União e Interseção', 'Resolveu dois exercícios com um desses dois', 'Comum', 'EXERCICIOS_UNIAO_INTERSECAO'),
+    ('Parábola básica', 'Concluiu a lição de função quadrática', 'Comum', 'LICAO_FUNCAO_QUADRATICA'),
+    ('Linear Iniciante', 'Concluiu a lição de função afim', 'Comum', 'LICAO_FUNCAO_AFIM'),
+    ('Log Iniciante', 'Concluiu a lição de logaritmos', 'Comum', 'LICAO_LOGARITMOS'),
+    ('Perfil completo', 'Preencheu tudo sobre seu perfil', 'Comum', 'PERFIL_COMPLETO'),
+    ('Primeiro Histórico', 'Viu o histórico pelo menos uma vez das lições concluídas', 'Comum', 'ABRIU_HISTORICO');
+
  
     
     insert into Conceito(nome, materia) values

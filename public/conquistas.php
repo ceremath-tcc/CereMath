@@ -13,7 +13,8 @@
     
     <?php require_once './components/header.php';
     require_once 'components/footer.php';
-    require_once 'components/fonts.php'; ?>
+    require_once 'components/fonts.php';
+    require './components/conquista-check.php'; ?>
 
     <!-- Conteúdo -->
     <div class="content">
