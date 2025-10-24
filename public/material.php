@@ -9,6 +9,7 @@
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="notificacao.css">
 </head>
 
 <body>
@@ -18,6 +19,7 @@
   require_once 'components/fonts.php';
   require './components/conquista-check.php' ?>
 
+<div id="award-container" class="award-container"></div>
   <div class="main-mat">
     <h1 class="type-2">📚 Materiais de Estudo</h1>
 

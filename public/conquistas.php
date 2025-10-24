@@ -7,6 +7,7 @@
     <title>CereMath - Conquistas</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="conquistas.css">
+    <link rel="stylesheet" href="notificacao.css">
 </head>
 
 <body>
@@ -15,7 +16,7 @@
     require_once 'components/footer.php';
     require_once 'components/fonts.php';
     require './components/conquista-check.php'; ?>
-
+    <div id="award-container" class="award-container"></div>
     <!-- Conteúdo -->
     <div class="content">
         <h1 class="type-2">🏆 Suas Conquistas:</h1>

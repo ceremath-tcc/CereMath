@@ -7,6 +7,7 @@
   <title>Minha Conta • Progresso</title>
   <link rel="stylesheet" href="conta.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="notificacao.css">
 
 </head>
 
@@ -37,6 +38,7 @@
   include 'components /fonts.php';
   require_once './account/login-allowed.php';
   require_once './components/footer.php'; ?>
+  <div id="award-container" class="award-container"></div>
   <div class="back" id="back"></div>
   <div class="modal" id="modal">
     <div class="flex">

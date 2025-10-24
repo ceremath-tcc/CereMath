@@ -237,5 +237,3 @@ create database Ceremath;
 	(8, @pergunta_id, '{"alt_c":"Não","alt_2":"Sim"}'),
 	(9, @pergunta_id, '{"alt_c":"Não","alt_2":"Sim"}'),
 	(10, @pergunta_id, '{"alt_c":"Sim","alt_2":"Não"}');
-    
-    
