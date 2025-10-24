@@ -68,19 +68,83 @@ create database Ceremath;
     );
     
     insert into Users (email, username, password) values
-    ("ceremath.tcc@gmail.com", "Ceremath", "123123123");
+    ("Ceremath.tcc@gmail.com", "Ceremath", "$2y$10$2oxa34WZNDebOzzG0oe4Su2i02by9WUfhahTD9PEhpq8lLeA1d0zu");
     
+    INSERT INTO user_conquista (id_user, id_conceito) VALUES
+	(1, 1),
+	(1, 2),
+	(1, 3),
+	(1, 4),
+	(1, 5),
+	(1, 6),
+	(1, 7),
+	(1, 8),
+	(1, 9),
+	(1, 10),
+	(1, 11),
+	(1, 12),
+	(1, 13),
+	(1, 14),
+	(1, 15),
+	(1, 16),
+	(1, 17),
+	(1, 18),
+	(1, 19),
+	(1, 20),
+	(1, 21),
+	(1, 22),
+	(1, 23),
+	(1, 24),
+	(1, 25),
+	(1, 26),
+	(1, 27),
+	(1, 28),
+	(1, 29),
+	(1, 30),
+	(1, 31),
+	(1, 32),
+	(1, 33),
+	(1, 34),
+	(1, 35),
+	(1, 36),
+	(1, 37),
+	(1, 38),
+	(1, 39),
+	(1, 40),
+	(1, 41);
+    
+    INSERT INTO user_Conquista (id_user, id_conquista, concluido) VALUES
+	(1, 1, 1),
+	(1, 2, 0),
+	(1, 3, 0),
+	(1, 4, 0),
+	(1, 5, 0),
+	(1, 6, 0),
+	(1, 7, 0),
+	(1, 8, 0),
+	(1, 9, 0),
+	(1, 10, 0),
+	(1, 11, 0),
+	(1, 12, 0),
+	(1, 13, 0),
+	(1, 14, 0),
+	(1, 15, 0),
+	(1, 16, 0),
+	(1, 17, 0),
+	(1, 18, 0);
 
+    
     INSERT INTO Conquista (nome, descricao, raridade, trigger_key) VALUES
 	('Bem vindo', 'Conquistada por fazer a primeira conta', 'Comum', 'CRIAR_CONTA'),
 	('Explorador', 'Acessou 5 conteúdos diferentes', 'Comum', 'VISITAS_5_CONTEUDOS'),
 	('Curioso(a)', 'Fez a primeira pergunta para a IA', 'Comum', 'CHAT_IA_PRIMEIRA_VEZ'),
 	('Navegador(a)', 'Visitou tudo do site', 'Comum', 'VISITOU_TUDO'),
 	('Águia', 'Concluiu uma lição sem pedir ajuda à IA', 'Rara', 'SEM_AJUDA_IA'),
+    ('Primeiros Passos', 'Concluiu a primeira lição', 'Comum', 'PRIMEIRA_LICAO'),
 	('Nunca desista', 'Tentou mais de duas vezes fazer a lição depois de não passar', 'Rara', 'TENTOU_VARIAS_VEZES'),
 	('Memória de elefante', 'Concluiu uma lição que já havia visto novamente', 'Rara', 'LICAO_REFEITA'),
 	('Primeiro Histórico', 'Viu o histórico pelo menos uma vez das lições concluídas', 'Comum', 'ABRIU_HISTORICO'),
-	('Concluiu Conjuntos', 'Finalizou todos os conceitos de Conjuntos', 'Épica', 'CONC	LUIU_CONJUNTOS'),
+	('Concluiu Conjuntos', 'Finalizou todos os conceitos de Conjuntos', 'Épica', 'CONCLUIU_CONJUNTOS'),
 	('Concluiu Função Afim', 'Finalizou todos os conceitos de Função Afim', 'Épica', 'CONCLUIU_FUNCAO_AFIM'),
 	('Concluiu Função Quadrática', 'Finalizou todos os conceitos de Função Quadrática', 'Épica', 'CONCLUIU_FUNCAO_QUADRATICA'),
 	('Concluiu Função Exponencial', 'Finalizou todos os conceitos de Função Exponencial', 'Épica', 'CONCLUIU_FUNCAO_EXPONENCIAL'),
@@ -173,3 +237,5 @@ create database Ceremath;
 	(8, @pergunta_id, '{"alt_c":"Não","alt_2":"Sim"}'),
 	(9, @pergunta_id, '{"alt_c":"Não","alt_2":"Sim"}'),
 	(10, @pergunta_id, '{"alt_c":"Sim","alt_2":"Não"}');
+    
+    

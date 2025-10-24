@@ -7,6 +7,7 @@ if (isset($_SESSION['triggers_ativados'])) {
     //Vai definir todas as conquistas guardadas como concluidas
     foreach ($_SESSION['triggers_ativados'] as $trigger_key) {
         $return = $controller->ativarTrigger($_SESSION['id'], $trigger_key);
+        echo $return;
     }
     // Esvazia após processar
     unset($_SESSION['triggers_ativados']);

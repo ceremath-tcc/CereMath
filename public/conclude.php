@@ -14,6 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //Aqui ele vai efetivar a mudança
     $controller->setConceito($id, $id_materia, $acertos, $erros);
 
+    if (!isset($_SESSION['triggers_ativados'])) {
+        $_SESSION['triggers_ativados'] = [];
+    }
+
     //Verifica se é o pra finalizar o conceito
     switch ($id_materia) {
         //Conjunto

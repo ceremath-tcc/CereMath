@@ -17,7 +17,7 @@ class Usercontroller
 
         // Verifica a senha
         if (!password_verify($password, $usuario['password'])) {
-            header('location: login.php?error=2');
+            header('location: ../../public/login.php?error=2');
             exit;
         }
 

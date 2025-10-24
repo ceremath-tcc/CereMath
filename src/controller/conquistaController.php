@@ -59,9 +59,9 @@ class ConquistaController
         $db = Connection::getConnection();
 
         // Verifica se já existe
-        for ($i = 1; $i < 22; $i++) {
+        for ($i = 1; $i < 18; $i++) {
             if ($i == 1) {
-                $stmt = $db->prepare("INSERT INTO user_Conquista (id_user, id_conquista, concluido) VALUES (?, $i, 1);");
+                $stmt = $db->prepare("INSERT INTO user_Conquista (id_user, id_conquista, concluido) VALUES (?, $i,  1);");
             } else {
                 $stmt = $db->prepare("INSERT INTO user_Conquista (id_user, id_conquista) VALUES (?, $i);");
              }
