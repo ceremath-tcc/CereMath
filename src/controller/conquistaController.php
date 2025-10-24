@@ -64,7 +64,7 @@ class ConquistaController
                 $stmt = $db->prepare("INSERT INTO user_Conquista (id_user, id_conquista, concluido) VALUES (?, $i, 1);");
             } else {
                 $stmt = $db->prepare("INSERT INTO user_Conquista (id_user, id_conquista) VALUES (?, $i);");
-            }
+             }
             $stmt->execute([$id]);
         }
 

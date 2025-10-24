@@ -29,7 +29,8 @@ create database Ceremath;
         id INT PRIMARY KEY auto_increment,
         nome VARCHAR(255),
         descricao NVARCHAR(500),
-        raridade NVARCHAR(500)
+        raridade NVARCHAR(500),
+        trigger_key VARCHAR(255)
     );
 
     Create table user_Conquista(
@@ -65,34 +66,33 @@ create database Ceremath;
         FOREIGN KEY (variaveis_id) REFERENCES variaveis(id) ON DELETE CASCADE,
         FOREIGN KEY (pergunta_id) REFERENCES perguntas(id) ON DELETE CASCADE
     );
+    
+    insert into Users (email, username, password) values
+    ("ceremath.tcc@gmail.com", "Ceremath", "123123123");
+    
 
     INSERT INTO Conquista (nome, descricao, raridade, trigger_key) VALUES
-    ('Bem vindo', 'Conquistada por fazer a primeira conta', 'Comum', 'CRIAR_CONTA'),
-    ('Primeiros Passos', 'Concluiu a primeira lição', 'Comum', 'PRIMEIRA_LICAO'),
-    ('Explorador', 'Acessou 5 conteúdos diferentes', 'Comum', 'VISITAS_5_CONTEUDOS'),
-    ('Curioso(a)', 'Fez a primeira pergunta para a IA', 'Comum', 'CHAT_IA_PRIMEIRA_VEZ'),
-    ('Navegador(a)', 'Visitou tudo do site', 'Comum', 'VISITOU_TUDO'),
-    ('Foco Total', 'Concluiu 3 lições sem pular nada', 'Rara', 'LICOES_SEM_PULAR'),
-    ('Ritmo de Estudos', 'Estudou todos os dias durante uma semana', 'Rara', 'ESTUDOS_7_DIAS'),
-    ('Águia', 'Concluiu uma lição sem pedir ajuda à IA', 'Rara', 'SEM_AJUDA_IA'),
-    ('Geômetra', 'Concluiu todo conteúdo de geometria', 'Épica', 'CONCLUIU_GEOMETRIA'),
-    ('Funções', 'Concluiu todas as lições de funções', 'Épica', 'CONCLUIU_FUNCOES'),
-    ('Estatístico(a)', 'Finalizou todo conteúdo de estatística e probabilidade', 'Épica', 'CONCLUIU_ESTATISTICA'),
-    ('Persistente', 'Repetiu uma lição até acertar todas as respostas', 'Rara', 'REPETIU_ATE_ACERTAR'),
-    ('Desafiante', 'Tentou resolver uma lição mais difícil antes do recomendado', 'Rara', 'LICAO_ANTES_TEMPO'),
-    ('Nunca desista', 'Tentou mais de duas vezes fazer a lição depois de não passar', 'Rara', 'TENTOU_VARIAS_VEZES'),
-    ('Memória de elefante', 'Concluiu uma lição que já havia visto novamente', 'Rara', 'LICAO_REFEITA'),
-    ('Colecionador(a)', 'Obteve todas as conquistas de uma categoria', 'Lendária', 'CONQUISTAS_COMPLETAS_CATEGORIA'),
-    ('Primeiro Conjunto', 'Concluiu a lição de conjuntos', 'Comum', 'LICAO_CONJUNTOS'),
-    ('União e Interseção', 'Resolveu dois exercícios com um desses dois', 'Comum', 'EXERCICIOS_UNIAO_INTERSECAO'),
-    ('Parábola básica', 'Concluiu a lição de função quadrática', 'Comum', 'LICAO_FUNCAO_QUADRATICA'),
-    ('Linear Iniciante', 'Concluiu a lição de função afim', 'Comum', 'LICAO_FUNCAO_AFIM'),
-    ('Log Iniciante', 'Concluiu a lição de logaritmos', 'Comum', 'LICAO_LOGARITMOS'),
-    ('Perfil completo', 'Preencheu tudo sobre seu perfil', 'Comum', 'PERFIL_COMPLETO'),
-    ('Primeiro Histórico', 'Viu o histórico pelo menos uma vez das lições concluídas', 'Comum', 'ABRIU_HISTORICO');
+	('Bem vindo', 'Conquistada por fazer a primeira conta', 'Comum', 'CRIAR_CONTA'),
+	('Explorador', 'Acessou 5 conteúdos diferentes', 'Comum', 'VISITAS_5_CONTEUDOS'),
+	('Curioso(a)', 'Fez a primeira pergunta para a IA', 'Comum', 'CHAT_IA_PRIMEIRA_VEZ'),
+	('Navegador(a)', 'Visitou tudo do site', 'Comum', 'VISITOU_TUDO'),
+	('Águia', 'Concluiu uma lição sem pedir ajuda à IA', 'Rara', 'SEM_AJUDA_IA'),
+	('Nunca desista', 'Tentou mais de duas vezes fazer a lição depois de não passar', 'Rara', 'TENTOU_VARIAS_VEZES'),
+	('Memória de elefante', 'Concluiu uma lição que já havia visto novamente', 'Rara', 'LICAO_REFEITA'),
+	('Primeiro Histórico', 'Viu o histórico pelo menos uma vez das lições concluídas', 'Comum', 'ABRIU_HISTORICO'),
+	('Concluiu Conjuntos', 'Finalizou todos os conceitos de Conjuntos', 'Épica', 'CONC	LUIU_CONJUNTOS'),
+	('Concluiu Função Afim', 'Finalizou todos os conceitos de Função Afim', 'Épica', 'CONCLUIU_FUNCAO_AFIM'),
+	('Concluiu Função Quadrática', 'Finalizou todos os conceitos de Função Quadrática', 'Épica', 'CONCLUIU_FUNCAO_QUADRATICA'),
+	('Concluiu Função Exponencial', 'Finalizou todos os conceitos de Função Exponencial', 'Épica', 'CONCLUIU_FUNCAO_EXPONENCIAL'),
+	('Concluiu Trigonometria', 'Finalizou todos os conceitos de Trigonometria', 'Épica', 'CONCLUIU_TRIGONOMETRIA'),
+	('Concluiu Matrizes', 'Finalizou todos os conceitos de Matrizes', 'Épica', 'CONCLUIU_MATRIZES'),
+	('Concluiu Sistemas Lineares', 'Finalizou todos os conceitos de Sistemas Lineares', 'Épica', 'CONCLUIU_SISTEMAS_LINEARES'),
+	('Concluiu Função Modular', 'Finalizou todos os conceitos de Função Modular', 'Épica', 'CONCLUIU_FUNCAO_MODULAR'),
+	('Concluiu Progressão Aritmética', 'Finalizou todos os conceitos de Progressão Aritmética', 'Épica', 'CONCLUIU_PROGRESSAO_ARITMETICA'),
+	('Concluiu Progressão Geométrica', 'Finalizou todos os conceitos de Progressão Geométrica', 'Épica', 'CONCLUIU_PROGRESSAO_GEOMETRICA');
 
+ select * from conceito;
  
-    
     insert into Conceito(nome, materia) values
     ("Elemento — Pertinência", "Conjuntos"),
     ("Conjunto universo", "Conjuntos"),
@@ -144,7 +144,7 @@ create database Ceremath;
  
 	-- Vamos supor que o ID gerado acima foi 1 (use LAST_INSERT_ID() se quiser automatizar)
 	SET @pergunta_id = LAST_INSERT_ID();
- 
+    
 	-- INSERINDO AS 10 VARIAÇÕES DA QUESTÃO
 	INSERT INTO variaveis (pergunta_id, valores) VALUES
 	(@pergunta_id, '{"v1": "1,2,3,4,5", "v2": 3}'),
@@ -173,4 +173,3 @@ create database Ceremath;
 	(8, @pergunta_id, '{"alt_c":"Não","alt_2":"Sim"}'),
 	(9, @pergunta_id, '{"alt_c":"Não","alt_2":"Sim"}'),
 	(10, @pergunta_id, '{"alt_c":"Sim","alt_2":"Não"}');
-    

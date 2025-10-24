@@ -1,5 +1,4 @@
 <?php
-require __DIR__ . '/../../src/controller/conquistaController.php';
 $controller = new ConquistaController();
 
 if (isset($_SESSION['id'])) {
@@ -8,7 +7,7 @@ if (isset($_SESSION['id'])) {
   $progresso = $controller->showConquista();
 }
 
-for ($i = 0; $i < 10; $i++) {
+for ($i = 0; $i < 18; $i++) {
   echo "<div class='achievement";
   if (isset($progresso[$i]['status_conquista'])) {
     if ($progresso[$i]['status_conquista'] != 'Concluída') {
