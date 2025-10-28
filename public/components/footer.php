@@ -6,7 +6,7 @@
  
   <div class="footer-content">
     <p><b>Email:</b> ceremath.tcc@gmail.com</p>
-    <p>[número do integrante] - [número do integrante] - [número do integrante] - [número do integrante] - [número do integrante]</p>
+    <p>19 98940-1535 - 19 99130-8885 - 19 97138-8618 - 19 98220-4885 - 19 99861-3209 </p>
   </div>
 </footer>
  
