@@ -63,9 +63,9 @@ class QuestaoController
         $stmt = $db->prepare("
             SELECT opcoes
             FROM alternativas
-            WHERE pergunta_id = ? AND variaveis_id = ?;
+            WHERE variaveis_id = ?;
         ");
-        $stmt->execute([$id_pergunta, $variaveis_id]);
+        $stmt->execute([$variaveis_id]);
         $altResult = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $alternativas = [];
@@ -75,9 +75,12 @@ class QuestaoController
 
         // Retorna as informações importantes
         return [
+            'id_pergunta' => $id_pergunta,
+            'id_variavel' => $variaveis_id,
             'enunciado_gerado' => $textoFinal,
             'alternativas' => $alternativas
         ];
     }
+    
 }
 

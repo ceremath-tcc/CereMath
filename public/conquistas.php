@@ -11,11 +11,12 @@
 </head>
 
 <body>
-    
+
     <?php require_once './components/header.php';
     require_once 'components/footer.php';
     require_once 'components/fonts.php';
     require './components/conquista-check.php'; ?>
+
     <div id="award-container" class="award-container"></div>
     <!-- Conteúdo -->
     <div class="content">
@@ -32,6 +33,9 @@
         ?>
     </div>
     <script src="./js/conquista.js"></script>
+    
+    <script src="./js/notificacao.js"></script>
+
 </body>
 
 </html>

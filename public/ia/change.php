@@ -74,6 +74,10 @@ if (is_resource($process)) {
     ];
 }
 
+//Faz o requerimento do arquivo
+require_once  "../components/conquista-add.php";
+ativarTriggerSession('CHAT_IA_PRIMEIRA_VEZ');
+
 // Redireciona para a mesma página com o parâmetro 'titulo'
 $titulo = $_GET['titulo'] ?? '';
 $titulo = intval($titulo);

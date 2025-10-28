@@ -13,7 +13,7 @@ const qtdNum = parseInt(qtd, 10);
 
 
 // Exemplo em arquivo script.js
-fetch(`components/load-questoes.php?qtd=5&materia=${qtdNum}`)  // ou o caminho correto do seu PHP
+fetch(`components/load-questoes.php?qtd=7&materia=${qtdNum}`)  // ou o caminho correto do seu PHP
   .then(response => response.json())
   .then(data => {
     //Para todas as questoes ele vai inserir na array perguntas
@@ -25,6 +25,8 @@ fetch(`components/load-questoes.php?qtd=5&materia=${qtdNum}`)  // ou o caminho c
         alternativas: [q.alternativas.alt_c, q.alternativas.alt_2],
         correta: 0
       });
+
+      console.log(q.id_pergunta + ", " + q.id_variavel)
 
     });
 

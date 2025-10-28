@@ -103,4 +103,34 @@ class ConquistaController
         // Opcional: retornar alguma mensagem para mostrar na tela
         return true;
     }
+
+    //Responsavel por verificar se existe a conquista e se ela foi desbloqueada
+    public function verificarTrigger($usuario_id, $trigger_key)
+    {
+        $db = Connection::getConnection();
+
+        // Verifica se a trigger está associada a alguma conquista
+        $stmt = $db->prepare("SELECT id FROM Conquista WHERE trigger_key = ?");
+        $stmt->execute([$trigger_key]);
+        $conquista = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$conquista){
+            return 0;
+        }
+
+        // Verifica se o usuário já possui essa conquista
+        $stmt = $db->prepare("SELECT * FROM user_Conquista WHERE id_user = ? AND id_conquista = ? AND concluido = 1");
+        $stmt->execute([$usuario_id, $conquista['id']]);
+
+        if ($stmt->rowCount() > 0){
+            return 1; // já tem
+        }
+
+        $stmt = $db->prepare("SELECT nome, descricao, trigger_key FROM Conquista WHERE trigger_key = ?");
+        $stmt->execute([$trigger_key]);
+        $conquista = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $conquista;
+
+    }
 }

@@ -14,7 +14,6 @@
     require_once './components/header.php';
     require_once 'components/footer.php';
     require_once './components/fonts.php';
-    require './components/conquista-check.php';
     header('Content-Type: text/html; charset=utf-8');
     mb_internal_encoding("UTF-8"); ?>
     <br>
