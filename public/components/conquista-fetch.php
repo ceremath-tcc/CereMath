@@ -14,7 +14,8 @@ if (isset($_SESSION['triggers_ativados']) && isset($_SESSION['id']) && !empty($_
 
     foreach ($_SESSION['triggers_ativados'] as $trigger_key) {
         $verify = $controller->verificarTrigger($_SESSION['id'], $trigger_key);
-
+        $controller->ativarTrigger($_SESSION['id'], $trigger_key);
+        
         // Se retornar um array (conquista nova)
         if (is_array($verify)) {
             $conquistas_novas[] = $verify; // Adiciona para enviar ao JS
@@ -28,9 +29,7 @@ if (isset($_SESSION['triggers_ativados']) && isset($_SESSION['id']) && !empty($_
     }
 
     //Vai definir todas as conquistas guardadas como concluidas
-    foreach ($_SESSION['triggers_ativados'] as $trigger_key) {
-        $return = $controller->ativarTrigger($_SESSION['id'], $trigger_key);
-    }
+    
 
     // --- PARTE DA LIMPEZA (MANTIDA DA LÓGICA ANTIGA DE CHECK) ---
     // Remove as chaves que acabamos de processar da sessão

@@ -4,9 +4,6 @@ require_once __DIR__ . '/../../src/controller/conquistaController.php';
 if (isset($_SESSION['triggers_ativados'])) {
     $controller = new ConquistaController();
 
-    
-
-
     // Esvazia após processar
     unset($controller);
 }
