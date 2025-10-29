@@ -175,9 +175,15 @@ finalBtn.addEventListener("click", () => {
     body: new URLSearchParams({
       id_conceito: qtdNum,
       acertos: pontos/10,
-      erros: (50 - pontos)/10
+      erros: (70 - pontos)/10
     })
   })
   .catch(err => console.error('Erro ao atualizar progresso:', err));
   window.location.href = 'home.php';
 });
+
+returnBtn.addEventListener("click", () => {
+   // Leva devolta para a tela inicial
+  window.location.href = 'home.php';
+});
+
