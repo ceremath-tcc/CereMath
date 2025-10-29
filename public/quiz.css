@@ -65,7 +65,6 @@ header {
 }
 
 .mascote {
-  background: purple;
   color: white;
   font-weight: bold;
   width: 120px;
@@ -75,7 +74,6 @@ header {
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 h2 {

@@ -26,7 +26,7 @@
 
   <div class="conteudo">
     <div class="pergunta-area">
-      <div class="mascote">CereMath</div>
+      <div class="mascote"><img src="./components/logo.png" width="100%"></div>
       <h2 id="pergunta" class="type-2">Quanto é 5 + 3?</h2>
     </div>
 
