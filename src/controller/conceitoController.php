@@ -12,6 +12,7 @@ class ConceitoController
         // Busca o usuário
         $stmt = $db->prepare("
             SELECT 
+                c.id,   
                 c.nome, 
                 c.materia, 
                 COALESCE(uc.concluido, 0) AS concluido

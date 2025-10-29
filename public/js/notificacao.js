@@ -42,8 +42,8 @@ function renderAwards() {
           🏅
         </div>
         <div>
-          <h2 class="award-title">${award.title}</h2>
-          <p class="award-text">${award.description}</p>
+          <h2 class="award-title type-1">${award.title}</h2>
+          <p class="award-text type-2">${award.description}</p>
         </div>
         <button class="award-remove">X</button>
       `;

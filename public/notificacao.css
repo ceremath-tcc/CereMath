@@ -19,8 +19,8 @@
     transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
-.award h2,
-p {
+.award-title,
+.award-text {
     color: #5c0078;
     font-weight: bold;
 }
@@ -34,8 +34,7 @@ p {
     overflow: hidden;
     justify-content: center;
     align-items: center;
-
-    flex-shrink: 0;
+    font-size: 30px;
     /* 🔑 impede o ícone de encolher */
 }
 
