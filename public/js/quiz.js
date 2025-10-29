@@ -53,6 +53,7 @@ let caixaFeedback = document.getElementById("caixa-feedback");
 let mensagem = document.getElementById("mensagem");
 let proximoBtn = document.getElementById("proximo");
 let finalBtn = document.getElementById("finalizar");
+let returnBtn = document.getElementById("return");
 let pontos = 0;
 let vidas = 2;
 let respostaSelecionada = null;
@@ -94,6 +95,7 @@ function carregarPergunta() {
   caixaFeedback.style.display = "none";
   proximoBtn.style.display = "none";
   finalBtn.style.display = "none";
+  returnBtn.style.display = "none";
   checarBtn.disabled = false;
   atualizarProgresso();
 }
@@ -143,6 +145,7 @@ checarBtn.addEventListener("click", () => {
       mensagem.textContent = "☠️ Fim de jogo! 😢";
       checarBtn.disabled = true;
       proximoBtn.style.display = "none";
+      returnBtn.style.display = "block";
       return;
     }
   }
