@@ -92,6 +92,7 @@
     });
   </script>
   <link rel="stylesheet" href="material.css">
+  <script src="./js/notificacao.js"></script>
 </body>
 
 </html>

@@ -66,9 +66,7 @@
     });
   </script>
   <link rel="stylesheet" href="conteudos.css">
-  <?php
-
-  ?>
+  <script src="./js/notificacao.js"></script>
 </body>
 
 </html>

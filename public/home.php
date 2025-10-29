@@ -80,7 +80,7 @@
 
 </section>
   <br><br><br><br>
-
+  <script src="./js/notificacao.js"></script>
 
 </body>
 </html>
