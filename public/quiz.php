@@ -45,6 +45,7 @@
       <p id="mensagem" class="type-2"></p>
       <button id="proximo" class="type-2">Próximo</button>
       <button id="finalizar" class="type-2">Finalizar</button>
+      <button id="return" class="type-2">Voltar a página inicial</button>
     </div>
   </div>
   <script src="./js/quiz.js"></script>
