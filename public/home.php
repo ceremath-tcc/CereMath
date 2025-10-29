@@ -31,6 +31,7 @@
       </div>
 
      
+      <!--
       <div class="card status">
         <h2 class="card-title type-2">🔥 Dias seguidos fazendo missão</h2>
         <br>
@@ -38,6 +39,7 @@
         <p class="error type-1">❌ [missão diária 2]</p>
         <p class="error type-1">❌ [missão diária 3]</p>
       </div>
+      -->
         
     </div>
   </div>
