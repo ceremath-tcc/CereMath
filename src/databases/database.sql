@@ -1,7 +1,8 @@
 	create database Ceremath;
     use Ceremath;
     
-    update user_conquista set concluido = 0 where id_user = 1 and id_conquista = 3;	
+
+    
     /*USUARIO*/
     CREATE TABLE Users (
         id INT AUTO_INCREMENT PRIMARY KEY,
