@@ -1,5 +1,5 @@
 <?php
-require_once '../src/database/Connection.php';
+require_once '../../src/database/Connection.php';
 
 try {
     $conn = Connection::getConnection();
