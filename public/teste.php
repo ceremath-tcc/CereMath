@@ -1,17 +1,22 @@
 <?php
-require __DIR__ . '/../src/controller/questaoController.php';
-$controller = new QuestaoController();
-
-$id_materia = isset($_GET['materia']) ? intval($_GET['materia']) : 1;
-$qtd = isset($_GET['qtd']) ? intval($_GET['qtd']) : 5; // quantidade de questões
-$controller = new QuestaoController();
+require_once '../src/database/Connection.php';
 
 try {
-    $questoes = [];
-    for ($i = 0; $i < $qtd; $i++) {
-        $questoes[] = $controller->gerarQuestaoAleatoria($id_materia);
+    $conn = Connection::getConnection();
+    echo "✅ Conectado com sucesso!<br>";
+
+    $stmt = $conn->query("SHOW TABLES");
+    $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    if (empty($tables)) {
+        echo "⚠️ Nenhuma tabela encontrada no banco de dados.<br>";
+        echo "Você já rodou o script SQL no Aiven?";
+    } else {
+        echo "Tabelas encontradas:<br>";
+        foreach ($tables as $table) {
+            echo "- {$table}<br>";
+        }
     }
-    echo json_encode($questoes, JSON_UNESCAPED_UNICODE);
-} catch (Exception $e) {
-    echo json_encode(['erro' => $e->getMessage()]);
+} catch (PDOException $e) {
+    echo "❌ Erro ao conectar ou consultar: " . $e->getMessage();
 }
