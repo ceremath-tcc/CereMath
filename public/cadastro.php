@@ -1,3 +1,7 @@
+<?php
+require_once './account/login-prohibited.php'
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -10,7 +14,7 @@
 </head>
 
 <body>
-    <?php require_once './components/fonts.php'; require_once './account/login-prohibited.php' ?>
+    <?php require_once './components/fonts.php'; ?>
     <div class="container">
 
     <canvas id="background"></canvas>
