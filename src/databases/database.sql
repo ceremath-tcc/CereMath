@@ -1,4 +1,8 @@
-    DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS user_Conceito;
+DROP TABLE IF EXISTS user_Conquista;
+DROP TABLE IF EXISTS Alternativas;
+DROP TABLE IF EXISTS Variaveis;
+DROP TABLE IF EXISTS Users;
     /*USUARIO*/
     CREATE TABLE Users (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -15,7 +19,7 @@
         materia varchar(255) NOT NULL
     );
 
-	DROP TABLE IF EXISTS user_Conceito;
+	
     Create table user_Conceito( 
 		id_user int not null, 
 		id_Conceito int not null, 
@@ -38,7 +42,7 @@
         trigger_key VARCHAR(255)
     );
 
-	DROP TABLE IF EXISTS user_Conquista;
+	
     Create table user_Conquista(
         id_user int not null,
         id_Conquista int not null,	
@@ -58,7 +62,7 @@
         FOREIGN KEY (materia_id) REFERENCES Conceito(id)
     );
 
-	DROP TABLE IF EXISTS Variaveis;
+	
     -- Tabela que armazena os nomes das variáveis (ex: v1, v2) e seus possíveis valores
     CREATE TABLE Variaveis (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -67,7 +71,7 @@
         FOREIGN KEY (pergunta_id) REFERENCES Perguntas(id) ON DELETE CASCADE
     );
 
-	DROP TABLE IF EXISTS Alternativas;
+	
     -- Tabela opcional para armazenar Alternativas geradas (ex: se quiser salvar)
     CREATE TABLE Alternativas (
         id INT AUTO_INCREMENT PRIMARY KEY,
