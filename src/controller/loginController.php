@@ -8,21 +8,29 @@ require_once __DIR__ . '/conquistaController.php';
 class Usercontroller
 {
     public function login($username, $password) {
-        $db = Connection::getConnection();
+    $db = Connection::getConnection();
 
-        // Busca o usuário
-        $stmt = $db->prepare("SELECT id, username, email, password FROM Users WHERE username = ?");
-        $stmt->execute([$username]);
-        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Busca o usuário
+    $stmt = $db->prepare("SELECT id, username, email, password FROM Users WHERE username = ?");
+    $stmt->execute([$username]);
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Verifica a senha
-        if (!password_verify($password, $usuario['password'])) {
-            header('location: ../../public/login.php?error=2');
-            exit;
-        }
-
-        return $usuario; // retorna os dados do usuário
+    // Verifica se o usuário existe
+    if (!$usuario) {
+        // Nenhum usuário encontrado
+        header('Location: ../../public/login.php?error=1'); // erro 1 = usuário não encontrado
+        exit;
     }
+
+    // Verifica se a senha está correta
+    if (!password_verify($password, $usuario['password'])) {
+        header('Location: ../../public/login.php?error=2'); // erro 2 = senha incorreta
+        exit;
+    }
+
+    return $usuario; // Login bem-sucedido
+}
+
 
 
 
