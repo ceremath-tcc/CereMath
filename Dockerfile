@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y python3 python3-pip
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 # Instala a api da Cohere (IA)
-RUN pip3 install cohere
+RUN pip3 install cohere --break-system-packages
 
 # Copia o projeto para o servidor Apache
 COPY . /var/www/html/
