@@ -2,6 +2,8 @@ DROP TABLE IF EXISTS user_Conceito;
 DROP TABLE IF EXISTS user_Conquista;
 DROP TABLE IF EXISTS Alternativas;
 DROP TABLE IF EXISTS Variaveis;
+DROP TABLE IF EXISTS Perguntas;
+
 DROP TABLE IF EXISTS Users;
     /*USUARIO*/
     CREATE TABLE Users (
@@ -53,7 +55,7 @@ DROP TABLE IF EXISTS Users;
         foreign key(id_Conquista) references Conquista(id)
     );
 
-	DROP TABLE IF EXISTS Perguntas;
+	
     -- Tabela principal com a pergunta base e placeholders
     CREATE TABLE Perguntas (
         id INT AUTO_INCREMENT PRIMARY KEY,
