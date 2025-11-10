@@ -37,7 +37,7 @@ class ConceitoController
 
         // Verifica se já existe
         for ($i = 1; $i < 41; $i++) {
-            $stmt = $db->prepare("INSERT INTO user_Conceito (id_user, id_conceito) VALUES (?, $i);");
+            $stmt = $db->prepare("INSERT INTO user_Conceito (id_user, id_Conceito) VALUES (?, $i);");
             $stmt->execute([$id]);
         }
 
