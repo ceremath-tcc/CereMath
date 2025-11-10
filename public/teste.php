@@ -15,27 +15,29 @@ try {
 
 
 
+//Mandando o Arquivo MySQL pra Aiven
 try {
+    // Conexão com o banco
     $pdo = Connection::getConnection();
 
-    // Nome do banco de dados (verifique no Aiven)
-    $dbname = 'defaultdb';
+    // Caminho do seu arquivo SQL
+    $sqlFile =  __DIR__ . '/../src/databases/database.sql';
 
-    // Desativa checagens de chave estrangeira
-    $pdo->exec("SET FOREIGN_KEY_CHECKS = 0;");
-
-    // Pega todas as tabelas
-    $stmt = $pdo->query("SHOW TABLES FROM $dbname;");
-    $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
-    foreach ($tables as $table) {
-        $pdo->exec("DROP TABLE IF EXISTS `$table`;");
+    // Verifica se o arquivo existe
+    if (!file_exists($sqlFile)) {
+        throw new Exception("Arquivo SQL não encontrado: $sqlFile");
     }
 
-    // Reativa checagens
-    $pdo->exec("SET FOREIGN_KEY_CHECKS = 1;");
+    // Lê o conteúdo do arquivo SQL
+    $sql = file_get_contents($sqlFile);
 
-    echo "✅ Todas as tabelas foram deletadas com sucesso!";
+    // Executa o SQL no banco
+    $pdo->exec($sql);
+
+    echo "✅ Base de dados importada com sucesso!";
 } catch (PDOException $e) {
-    echo "❌ Erro ao limpar o banco: " . $e->getMessage();
+    echo "❌ Erro ao importar (PDO): " . $e->getMessage();
+} catch (Exception $e) {
+    echo "⚠️ Erro geral: " . $e->getMessage();
 }
+
