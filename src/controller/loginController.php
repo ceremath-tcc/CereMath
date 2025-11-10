@@ -2,8 +2,8 @@
 // src/controllers/Productcontroller.php
 
 require_once __DIR__ . '/../model/login.php';
-require_once __DIR__ . './conceitoController.php';
-require_once __DIR__ . './conquistacontroller.php';
+require_once __DIR__ . '/conceitoController.php';
+require_once __DIR__ . '/conquistaController.php';
 
 class Usercontroller
 {
