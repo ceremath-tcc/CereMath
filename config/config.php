@@ -1,9 +1,9 @@
 <?php
-    //config.php
-    return [
-        'host' => 'ceremath021-1-ceremath-615f.f.aivencloud.com',
-        'port' => 10861,
-        'dbname' => 'defaultdb',
-        'user' => 'avnadmin',
-        'pass' => 'AVNS_wQkr-6YhgBAjELwj-Fs'
-    ];
+
+return [
+    'host' => getenv('DB_HOST'),
+    'port' => getenv('DB_PORT'),
+    'dbname' => getenv('DB_NAME'),
+    'user' => getenv('DB_USER'),
+    'pass' => getenv('DB_PASS'),
+];
