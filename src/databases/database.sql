@@ -1,7 +1,4 @@
-
-    
-
-    
+    DROP TABLE IF EXISTS Users;
     /*USUARIO*/
     CREATE TABLE Users (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -9,12 +6,16 @@
         username VARCHAR(255) NOT NULL,
         password VARCHAR(255) NOT NULL
     );
+
+	DROP TABLE IF EXISTS Conceito;
     -- MATERIAS
     Create table Conceito(
         id INT PRIMARY KEY auto_increment,  -- ID da Materia
         nome VARCHAR(255) NOT NULL,           -- Nome da Materia
         materia varchar(255) NOT NULL
     );
+
+	DROP TABLE IF EXISTS user_Conceito;
     Create table user_Conceito( 
 		id_user int not null, 
 		id_Conceito int not null, 
@@ -27,6 +28,7 @@
 		foreign key(id_Conceito) references Conceito(id) 
     );
 
+	DROP TABLE IF EXISTS Conquista;
     -- Conquistas
     Create table Conquista(
         id INT PRIMARY KEY auto_increment,
@@ -36,6 +38,7 @@
         trigger_key VARCHAR(255)
     );
 
+	DROP TABLE IF EXISTS user_Conquista;
     Create table user_Conquista(
         id_user int not null,
         id_Conquista int not null,	
@@ -46,6 +49,7 @@
         foreign key(id_Conquista) references Conquista(id)
     );
 
+	DROP TABLE IF EXISTS Perguntas;
     -- Tabela principal com a pergunta base e placeholders
     CREATE TABLE Perguntas (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -53,6 +57,8 @@
         texto TEXT NOT NULL, -- Exemplo: "Considere a equação [v1]x + [v2] = [v3]. Descubra o valor de x."
         FOREIGN KEY (materia_id) REFERENCES Conceito(id)
     );
+
+	DROP TABLE IF EXISTS Variaveis;
     -- Tabela que armazena os nomes das variáveis (ex: v1, v2) e seus possíveis valores
     CREATE TABLE Variaveis (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -60,6 +66,8 @@
         valores JSON NOT NULL,     -- Exemplo: '{"v1": 1, "v2": 1}'
         FOREIGN KEY (pergunta_id) REFERENCES Perguntas(id) ON DELETE CASCADE
     );
+
+	DROP TABLE IF EXISTS Alternativas;
     -- Tabela opcional para armazenar Alternativas geradas (ex: se quiser salvar)
     CREATE TABLE Alternativas (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -133,75 +141,9 @@
     ("Fórmula do termo geral", "Progressão Geométrica"),
     ("Soma dos termos finita e infinita", "Progressão Geométrica"),
     ("Limite de sequência", "Progressão Geométrica");
-	
-    
-    -- Colocando o user base (User: Ceremath, id: 1)
-    
-    insert into Users (email, username, password) values
-    ("Ceremath.tcc@gmail.com", "Ceremath", "$2y$10$2oxa34WZNDebOzzG0oe4Su2i02by9WUfhahTD9PEhpq8lLeA1d0zu");
-    
-    INSERT INTO user_Conceito (id_user, id_Conceito) VALUES
-	(1, 1),
-	(1, 2),
-	(1, 3),
-	(1, 4),
-	(1, 5),
-	(1, 6),
-	(1, 7),
-	(1, 8),
-	(1, 9),
-	(1, 10),
-	(1, 11),
-	(1, 12),
-	(1, 13),
-	(1, 14),
-	(1, 15),
-	(1, 16),
-	(1, 17),
-	(1, 18),
-	(1, 19),
-	(1, 20),
-	(1, 21),
-	(1, 22),
-	(1, 23),
-	(1, 24),
-	(1, 25),
-	(1, 26),
-	(1, 27),
-	(1, 28),
-	(1, 29),
-	(1, 30),
-	(1, 31),
-	(1, 32),
-	(1, 33),
-	(1, 34),
-	(1, 35),
-	(1, 36),
-	(1, 37),
-	(1, 38),
-	(1, 39),
-	(1, 40),
-	(1, 41);
-    
-    INSERT INTO user_Conquista (id_user, id_Conquista, concluido) VALUES
-	(1, 1, 1),
-	(1, 2, 0),
-	(1, 3, 0),
-	(1, 4, 0),
-	(1, 5, 0),
-	(1, 6, 0),
-	(1, 7, 0),
-	(1, 8, 0),
-	(1, 9, 0),
-	(1, 10, 0),
-	(1, 11, 0),
-	(1, 12, 0),
-	(1, 13, 0),
-	(1, 14, 0),
-	(1, 15, 0),
-	(1, 16, 0),
-	(1, 17, 0),
-	(1, 18, 0);
+
+
+
     
     
     
