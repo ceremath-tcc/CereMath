@@ -1,5 +1,4 @@
-	create database Ceremath;
-    use Ceremath;
+
     
 
     
