@@ -11,7 +11,7 @@ class Usercontroller
         $db = Connection::getConnection();
 
         // Busca o usuário
-        $stmt = $db->prepare("SELECT id, username, email, password FROM users WHERE username = ?");
+        $stmt = $db->prepare("SELECT id, username, email, password FROM Users WHERE username = ?");
         $stmt->execute([$username]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -31,7 +31,7 @@ class Usercontroller
         $db = Connection::getConnection();
 
         // Verifica se já existe
-        $stmt = $db->prepare("SELECT id FROM users WHERE username = ?");
+        $stmt = $db->prepare("SELECT id FROM Users WHERE username = ?");
         $stmt->execute([$username]);
         if ($stmt->fetch()) {
             header('location: /../../public/cadastro.php?error=1');
@@ -42,7 +42,7 @@ class Usercontroller
         $senha_hash = password_hash($password, PASSWORD_DEFAULT);
 
         // Inserindo dentro do banco de dados
-        $stmt = $db->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
+        $stmt = $db->prepare("INSERT INTO Users (username, password, email) VALUES (?, ?, ?)");
         $stmt->execute([$username, $senha_hash, $email]);
 
         //Guarda o id do usuario
@@ -69,7 +69,7 @@ class Usercontroller
         $db = Connection::getConnection();
 
         // Verifica se já existe
-        $stmt = $db->prepare("SELECT id FROM users WHERE username = ?");
+        $stmt = $db->prepare("SELECT id FROM Users WHERE username = ?");
         $stmt->execute([$username]);
 
         $user = $stmt->fetch();
