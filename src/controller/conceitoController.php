@@ -44,11 +44,12 @@ class ConceitoController
     }
 
     public function showProgressao($id)
-    {
-        $db = Connection::getConnection();
+{
+    $db = Connection::getConnection();
 
-        // Verifica se já existe
-        $stmt = $db->prepare('SELECT uc.id_user, 
+    $stmt = $db->prepare('
+        SELECT 
+            uc.id_user, 
             c.materia, 
             SUM(uc.acertos) AS total_acertos, 
             SUM(uc.erros) AS total_erros, 
@@ -61,20 +62,23 @@ class ConceitoController
         WHERE 
             uc.id_user = ?
         GROUP BY 
-            uc.id_user, c.materia;
-        ');
-        $stmt->execute([$id]);
-        $progresso = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            uc.id_user, c.materia
+        ORDER BY 
+            MIN(c.id) ASC;
+    ');
+    
+    $stmt->execute([$id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
-        return $progresso;
-    }
 
-    public function showPorcentagem($id)
-    {
-        $db = Connection::getConnection();
+public function showPorcentagem($id)
+{
+    $db = Connection::getConnection();
 
-        // Verifica se já existe
-        $stmt = $db->prepare('SELECT uc.id_user,
+    $stmt = $db->prepare('
+        SELECT 
+            uc.id_user,
             c.materia,
             COUNT(*) AS total_conceitos,
             SUM(CASE WHEN uc.concluido = 2 THEN 1 ELSE 0 END) AS concluidos,
@@ -88,13 +92,15 @@ class ConceitoController
         WHERE 
             uc.id_user = ?
         GROUP BY 
-            uc.id_user, c.materia;
-        ');
-        $stmt->execute([$id]);
-        $progresso = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            uc.id_user, c.materia
+        ORDER BY 
+            MIN(c.id) ASC;
+    ');
+    
+    $stmt->execute([$id]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
-        return $progresso;
-    }
 
     //Responsavel por passar de materia
     public function setConceito($idUser, $idConceito, $acertos, $erros){
