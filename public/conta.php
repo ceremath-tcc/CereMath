@@ -1,5 +1,26 @@
 <?php
     session_start();
+    require_once "./account/contaManager.php";
+    require './components/conquista-check.php';
+      //Agora vai guardar o progresso do usuario dentro da array $progresso
+      $progresso = $controllerC->showProgressao($_SESSION['id']);
+      unset($controllerC);
+      $labels = array_column($progresso, 'materia');
+      $acertos = array_column($progresso, 'total_acertos');
+      $erros = array_column($progresso, 'total_erros');
+      $labelsFiltrados = [];
+      $acertosFiltrados = [];
+      $errosFiltrados = [];
+    
+      foreach ($progresso as $row) {
+        if ($row['total_acertos'] > 0 || $row['total_erros'] > 0) {
+          $total = $row['total_acertos'] + $row['total_erros'];
+          
+          $labelsFiltrados[] = $row['materia'];
+          $acertosFiltrados[] = ($row['total_acertos'] / $total) * 100;
+          $errosFiltrados[] = ($row['total_erros'] / $total) * 100;
+        }
+      }
 ?>
 
 <!DOCTYPE html>
@@ -17,27 +38,8 @@
 
 <body>
   <?php include './components/header.php';
-  require_once "./account/contaManager.php";
-  require './components/conquista-check.php';
-  //Agora vai guardar o progresso do usuario dentro da array $progresso
-  $progresso = $controllerC->showProgressao($_SESSION['id']);
-  unset($controllerC);
-  $labels = array_column($progresso, 'materia');
-  $acertos = array_column($progresso, 'total_acertos');
-  $erros = array_column($progresso, 'total_erros');
-  $labelsFiltrados = [];
-  $acertosFiltrados = [];
-  $errosFiltrados = [];
-
-  foreach ($progresso as $row) {
-    if ($row['total_acertos'] > 0 || $row['total_erros'] > 0) {
-      $total = $row['total_acertos'] + $row['total_erros'];
-      
-      $labelsFiltrados[] = $row['materia'];
-      $acertosFiltrados[] = ($row['total_acertos'] / $total) * 100;
-      $errosFiltrados[] = ($row['total_erros'] / $total) * 100;
-    }
-  }
+  
+  
 
   include './components/fonts.php';
   require_once './account/login-allowed.php';
