@@ -1,5 +1,7 @@
 <?php
     session_start();
+    header('Content-Type: text/html; charset=utf-8');
+    mb_internal_encoding("UTF-8");
 ?>
 
 <!DOCTYPE html>
@@ -18,8 +20,7 @@
     require_once './components/header.php';
     require_once 'components/footer.php';
     require_once './components/fonts.php';
-    header('Content-Type: text/html; charset=utf-8');
-    mb_internal_encoding("UTF-8"); ?>
+    ?>
     <br>
     <div class="content-box">
         <!--Aqui ficara os materiais-->
