@@ -21,7 +21,7 @@ try {
     $pdo = Connection::getConnection();
 
     // Caminho do seu arquivo SQL
-    $sqlFile = __DIR__ . '/../backup.sql'; // mude o caminho se estiver em outra pasta
+    $sqlFile =  __DIR__ . '/../src/databases/database.sql';
 
     // Verifica se o arquivo existe
     if (!file_exists($sqlFile)) {
