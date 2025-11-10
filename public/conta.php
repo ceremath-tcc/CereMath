@@ -39,7 +39,7 @@
     }
   }
 
-  include 'components /fonts.php';
+  include './components/fonts.php';
   require_once './account/login-allowed.php';
   require_once './components/footer.php'; ?>
   <div id="award-container" class="award-container"></div>
