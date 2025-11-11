@@ -6,27 +6,25 @@ require_once __DIR__ . '/../model/login.php';
 class ConceitoController
 {
     public function checkConceito($user)
-    {
-        $db = Connection::getConnection();
+{
+    $db = Connection::getConnection();
 
-        // Busca o usuário
-        $stmt = $db->prepare("
-            SELECT 
-                c.id,   
-                c.nome, 
-                c.materia, 
-                COALESCE(uc.concluido, 0) AS concluido
-            FROM Conceito c
-            LEFT JOIN user_Conceito uc
-                ON c.id = uc.id_conceito AND uc.id_user = ?
-            ORDER BY c.materia
-        ");
+    $stmt = $db->prepare("
+        SELECT 
+            c.id,   
+            c.nome, 
+            c.materia, 
+            COALESCE(uc.concluido, 0) AS concluido
+        FROM Conceito c
+        LEFT JOIN user_Conceito uc
+            ON c.id = uc.id_conceito AND uc.id_user = ?
+        ORDER BY c.materia, c.id ASC
+    ");
 
-        $stmt->execute([$user]);
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->execute([$user]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
-        return $result;
-    }
 
 
 
