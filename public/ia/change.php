@@ -21,7 +21,7 @@ $python = "python3";  // Para sistemas Unix
 if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
     $python = "C:\\Python313\\python.exe";  // Caminho específico do Windows
 }
-$python = "C:/Python313/python.exe";
+$python = "python3";
 
 // Caminho do script Python
 $caminho_script = "../python/ia.py";
