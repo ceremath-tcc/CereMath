@@ -8,7 +8,7 @@ class QuestaoController
         $db = Connection::getConnection();
 
         // 1️⃣ Busca todas as perguntas da matéria
-        $stmt = $db->prepare("SELECT id, texto FROM perguntas WHERE materia_id = ?");
+        $stmt = $db->prepare("SELECT id, texto FROM Perguntas WHERE materia_id = ?");
         $stmt->execute([$id_materia]);
         $questoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -23,7 +23,7 @@ class QuestaoController
         $textoBase = $questaoEscolhida['texto'];
 
         // 3️⃣ Busca as variáveis da questão
-        $stmt = $db->prepare("SELECT id, valores FROM variaveis WHERE pergunta_id = ?");
+        $stmt = $db->prepare("SELECT id, valores FROM Variaveis WHERE pergunta_id = ?");
         $stmt->execute([$id_pergunta]);
         $variaveis = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -62,7 +62,7 @@ class QuestaoController
         // 6️⃣ Busca as alternativas correspondentes à pergunta e ao conjunto de variáveis
         $stmt = $db->prepare("
             SELECT opcoes
-            FROM alternativas
+            FROM Alternativas
             WHERE variaveis_id = ?;
         ");
         $stmt->execute([$variaveis_id]);
