@@ -18,10 +18,8 @@ fetch(`components/load-questoes.php?qtd=7&materia=${qtdNum}`)  // ou o caminho c
   .then(data => {
 
     //Mostra se a variavel data veio errado
-    if (!Array.isArray(data)) {
-      console.error("Resposta inesperada do servidor:", data);
-      return;
-    }
+    console.error("Data: ", data);
+      
     
     //Para todas as questoes ele vai inserir na array perguntas
     data.forEach((q) => {
