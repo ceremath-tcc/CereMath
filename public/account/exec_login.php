@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
     $data = [
       "from" => "onboarding@resend.dev",
-      "to" => ["$_SESSION['email']"],
+      "to" => [$_SESSION['email']],
       "subject" => "Novo login detectado! - Ceremath",
       "html" => "Login detectado na sua conta: <b> " . $_SESSION['username'] . "</b> no dia " . date('d/m/Y') . " às " . date('H:i:s') . " - Horario de Brasília.<br><br>Caso não se recorde de ter feito o login, é recomendavel que mude sua senha imediatamente.</p>"
     ];
