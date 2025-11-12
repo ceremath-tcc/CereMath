@@ -37,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
     $data = [
       "from" => "onboarding@resend.dev",
-      "to" => ["$_SESSION['email']"],
+      "to" => [$_SESSION['email']],
       "subject" => "Bem vindo ao Ceremath!",
       "html" => "Sua conta <b> " . $_SESSION['username'] . "</b> foi criada com sucesso no dia " . date('d/m/Y') . " às " . date('H:i:s') . " - Horario de Brasília.<br>Seja bem vindo ao nosso site e em nome de todos os participantes do nosso TCC, desejamos que consiga aprender a matematica!<br><br>Caso não se recorde de ter feito o cadastro, é recomendavel que tome ação imediatamente quanto a isso."
     ];
