@@ -51,11 +51,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
     $response = curl_exec($ch);
     curl_close($ch);
-    
-    echo $response;
-
     //Final E-mail
 
+
+    //Finalizando
     unset($controller);
     header('Location: /../public/home.php');
 } else {
