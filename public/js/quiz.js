@@ -16,6 +16,7 @@ const qtdNum = parseInt(qtd, 10);
 fetch(`components/load-questoes.php?qtd=7&materia=${qtdNum}`)  // ou o caminho correto do seu PHP
   .then(response => response.json())
   .then(data => {
+
     //Mostra se a variavel data veio errado
     if (!Array.isArray(data)) {
       console.error("Resposta inesperada do servidor:", data);
