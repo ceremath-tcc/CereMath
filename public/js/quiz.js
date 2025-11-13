@@ -24,10 +24,25 @@ fetch(`components/load-questoes.php?qtd=7&materia=${qtdNum}`)  // ou o caminho c
     //Para todas as questoes ele vai inserir na array perguntas
     data.forEach((q) => {
 
+      //Coloca as alternativas dentro aqui:
+      let alt = q.alternativas;
+      let alternativas = [];
+
+      //Verifica se existe alternativas para esta questão
+      if (alt) {
+        // tenta pegar tanto alt_* quanto op_*
+        alternativas = [
+          alt.alt_c || alt.op_c,
+          alt.alt_1 || alt.op_1,
+          alt.alt_2 || alt.op_2,
+          alt.alt_3 || alt.op_3
+        ].filter(a => a !== undefined); // remove os que vierem undefined
+      }
+      
       //Da um push desse jeito, (eles permanecem na posição 1 por conveniencia)
       perguntas.push({
         enunciado: q.enunciado_gerado,
-        alternativas: [q.alternativas.alt_c, q.alternativas.alt_2],
+        alternativas: alternativas,
         correta: 0
       });
 
