@@ -3800,31 +3800,6 @@ VALUES
 
 -- ===================== Bloco de variáveis e Alternativas =====================
 
--- Variáveis 1151–1160
-INSERT INTO Variaveis (pergunta_id, valores) VALUES
-(@pergunta_id, '{"v1":"0"}'),
-(@pergunta_id, '{"v1":"π/6"}'),
-(@pergunta_id, '{"v1":"π/4"}'),
-(@pergunta_id, '{"v1":"π/3"}'),
-(@pergunta_id, '{"v1":"π/2"}'),
-(@pergunta_id, '{"v1":"π"}'),
-(@pergunta_id, '{"v1":"3π/2"}'),
-(@pergunta_id, '{"v1":"2π"}'),
-(@pergunta_id, '{"v1":"5π/6"}'),
-(@pergunta_id, '{"v1":"7π/6"}');
-
-INSERT INTO Alternativas (Variaveis_id, opcoes) VALUES
-(1151, '{"alt_c":"4, maior","alt_2":"4, menor","alt_3":"5, igual","alt_4":"6, maior"}'),
-(1152, '{"alt_c":"12, maior","alt_2":"12, menor","alt_3":"10, maior","alt_4":"11, menor"}'),
-(1153, '{"alt_c":"24, maior","alt_2":"23, menor","alt_3":"25, igual","alt_4":"20, menor"}'),
-(1154, '{"alt_c":"12, maior","alt_2":"10, menor","alt_3":"13, maior","alt_4":"8, menor"}'),
-(1155, '{"alt_c":"6, menor","alt_2":"8, igual","alt_3":"7, menor","alt_4":"9, maior"}'),
-(1156, '{"alt_c":"8, maior","alt_2":"7, menor","alt_3":"9, maior","alt_4":"10, igual"}'),
-(1157, '{"alt_c":"5, menor","alt_2":"10, maior","alt_3":"6, menor","alt_4":"7, menor"}'),
-(1158, '{"alt_c":"7, igual","alt_2":"8, menor","alt_3":"9, maior","alt_4":"6, menor"}'),
-(1159, '{"alt_c":"40, maior","alt_2":"39, menor","alt_3":"38, menor","alt_4":"41, igual"}'),
-(1160, '{"alt_c":"8, menor","alt_2":"9, igual","alt_3":"10, maior","alt_4":"7, menor"}');
-
 -- Variáveis 1161–1170
 INSERT INTO Variaveis (pergunta_id, valores) VALUES
 (@pergunta_id, '{"v1":"0"}'),
