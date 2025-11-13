@@ -81,6 +81,102 @@ class QuestaoController
             'alternativas' => $alternativas
         ];
     }
-    
+
+
+    public function listarTodasQuestoes($id_materia)
+{
+    $db = Connection::getConnection();
+
+    // 1️⃣ Busca todas as perguntas da matéria
+    $stmt = $db->prepare("SELECT id, texto FROM Perguntas WHERE materia_id = ?");
+    $stmt->execute([$id_materia]);
+    $questoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if (empty($questoes)) {
+        throw new Exception("Nenhuma questão encontrada para esta matéria.");
+    }
+
+    $resultadoFinal = [];
+
+    // 2️⃣ Itera sobre cada pergunta
+    foreach ($questoes as $questao) {
+        $id_pergunta = $questao['id'];
+        $textoBase = $questao['texto'];
+
+        // 3️⃣ Busca as variações (variáveis) dessa questão
+        $stmt = $db->prepare("SELECT id, valores FROM Variaveis WHERE pergunta_id = ?");
+        $stmt->execute([$id_pergunta]);
+        $variaveis = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (empty($variaveis)) {
+            $resultadoFinal[] = [
+                'id_pergunta' => $id_pergunta,
+                'enunciado_base' => $textoBase,
+                'variacoes' => [],
+                'erro' => "Nenhuma variação encontrada."
+            ];
+            continue;
+        }
+
+        $listaVariacoes = [];
+
+        // 4️⃣ Para cada variação, substitui os placeholders
+        foreach ($variaveis as $variavel) {
+            $variaveis_id = $variavel['id'];
+            $valores = json_decode($variavel['valores'], true);
+            $textoFinal = $textoBase;
+
+            if (!is_array($valores)) {
+                $listaVariacoes[] = [
+                    'id_variavel' => $variaveis_id,
+                    'erro' => "JSON de valores inválido."
+                ];
+                continue;
+            }
+
+            foreach ($valores as $chave => $valor) {
+                if (is_string($valor) && str_contains($valor, ',')) {
+                    $lista = array_map('trim', explode(',', $valor));
+
+                    // mesmo comportamento do seu código original
+                    if ($chave !== 'v1') { 
+                        $valorSubstituir = $lista[array_rand($lista)];
+                    } else {
+                        $valorSubstituir = implode(',', $lista);
+                    }
+                } else {
+                    $valorSubstituir = $valor;
+                }
+
+                $textoFinal = str_replace(["[$chave]", $chave], $valorSubstituir, $textoFinal);
+            }
+
+            // 5️⃣ Busca alternativas para essa variação
+            $stmtAlt = $db->prepare("SELECT opcoes FROM Alternativas WHERE variaveis_id = ?");
+            $stmtAlt->execute([$variaveis_id]);
+            $altResult = $stmtAlt->fetch(PDO::FETCH_ASSOC);
+
+            $alternativas = $altResult && isset($altResult['opcoes'])
+                ? json_decode($altResult['opcoes'], true)
+                : [];
+
+            $listaVariacoes[] = [
+                'id_variavel' => $variaveis_id,
+                'valores' => $valores,
+                'enunciado_gerado' => $textoFinal,
+                'alternativas' => $alternativas
+            ];
+        }
+
+        $resultadoFinal[] = [
+            'id_pergunta' => $id_pergunta,
+            'enunciado_base' => $textoBase,
+            'variacoes' => $listaVariacoes
+        ];
+    }
+
+    return $resultadoFinal;
+}
+
 }
 
