@@ -24,7 +24,7 @@
   </div>
 
   <header>
-    <div class="vidas">❤️❤️</div>
+    <div class="vidas">❤️❤️❤️</div>
     <div class="pontuacaon type-2">Pontos: <span id="pontos">0</span></div>
   </header>
 
