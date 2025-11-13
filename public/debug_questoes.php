@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../src/controller/perguntaController.php';
+require_once __DIR__ . '/../src/controller/questaoController.php';
 
 $controller = new PerguntaController();
 $resultado = null;
