@@ -72,7 +72,7 @@ let proximoBtn = document.getElementById("proximo");
 let finalBtn = document.getElementById("finalizar");
 let returnBtn = document.getElementById("return");
 let pontos = 0;
-let vidas = 2;
+let vidas = 3;
 let respostaSelecionada = null;
 let perguntaAtual = 0;
 
@@ -156,7 +156,7 @@ checarBtn.addEventListener("click", () => {
 
     vidas--;
     document.querySelector(".vidas").textContent =
-      vidas === 2 ? "❤️❤️" : vidas === 1 ? "❤️" : "💀";
+      vidas === 3 ? "❤️❤️❤️" : vidas === 2 ? "❤️❤️" : vidas === 1 ? "❤️" : "💀";
 
     if (vidas <= 0) {
       mensagem.textContent = "☠️ Fim de jogo! 😢";
