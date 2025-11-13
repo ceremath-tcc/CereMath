@@ -39,7 +39,7 @@ fetch(`components/load-questoes.php?qtd=7&materia=${qtdNum}`)  // ou o caminho c
     carregarPergunta();
 
   })
-  .catch(error => console.error("Erro: ", error);
+  .catch(error => console.error("Erro: ", error));
 
 // Função para embaralhar um array (Fisher-Yates)
 function embaralhar(array) {
