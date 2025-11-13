@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../src/controller/questaoController.php';
 
-$controller = new PerguntaController();
+$controller = new QuestaoController();
 $resultado = null;
 $erro = null;
 
