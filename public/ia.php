@@ -94,7 +94,7 @@
                         class="type-1">
                     <button class="btn-2"><a href="./ia/change.php?titulo=<?php if (isset($_GET['titulo'])) {
                         echo $_GET['titulo'];
-                    } ?>" class="link">↻</a></button>
+                    } ?>" class="link" id="btn-refazer">↻</a></button>
                     <button type="submit" class="btn-1">➤</button>
                 </div>
             </form>
