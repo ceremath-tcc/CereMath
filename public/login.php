@@ -40,7 +40,9 @@
                     ?>
                     <br><br>
                     <p class="sub-text type-1">Não tem conta? <a id="criar-conta" href="cadastro.php">Criar conta.</a></p>
-                    <br>    
+                    <br> 
+                    <p class="sub-text type-1"><a id="esqueci-senha" href="esqueci-senha.php">Esqueci minha senha.</a></p>
+                    <br><br>
                     <input type="submit" class="submit type-2"value="Entrar"> 
 
                 </form>
